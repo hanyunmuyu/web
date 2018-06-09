@@ -14,12 +14,17 @@
 Auth::routes();
 Route::group(['namespace'=>'Home'],function (){
     Route::get('/', 'IndexController@index');
+    //注册
     Route::get('/register', 'RegisterController@index')->name('register');
     Route::post('/register/register', 'RegisterController@doRegister');
+    //登录
     Route::get('/login', 'LoginController@index')->name('login');
-    Route::get('/logout', 'LoginController@index');
+    Route::post('/login/doLogin', 'LoginController@doLogin');
+    //编辑用户信息
     Route::get('/user/edit', 'UserController@edit');
+    //创建社团
     Route::get('/club/add', 'ClubController@add');
+    //社团首页
     Route::get('/club', 'ClubController@index');
 });
 Route::get('/home', 'HomeController@index')->name('home');
