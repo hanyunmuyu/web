@@ -1,7 +1,10 @@
 @extends('layouts.layout')
+@section('title')
+    注册
+@endsection
 @section('content')
-    <div class="card">
-        <div class="card-header">注册</div>
+    <div class="card mt-1">
+        <div class="card-header text-center">注册</div>
 
         <div class="card-body">
 

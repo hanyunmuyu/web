@@ -14,7 +14,6 @@ class LoginController extends Controller
     //
     public function index()
     {
-        var_dump(Hash::make('123456'));
         return view('home.login.index');
     }
 
