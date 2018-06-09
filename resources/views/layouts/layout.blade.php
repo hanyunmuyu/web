@@ -23,7 +23,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto" style="display: flex">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span></a>
                 </li>
@@ -32,6 +32,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/club">社团</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/club">热议</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/club">问答</a>
                 </li>
             </ul>
             @if(Auth::check())
