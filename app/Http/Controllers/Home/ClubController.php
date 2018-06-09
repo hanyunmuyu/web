@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ClubController extends Controller
 {
@@ -13,6 +14,6 @@ class ClubController extends Controller
     }
     public function add()
     {
-        return view('club.add');
+        return view('home.club.add');
     }
 }

@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <title>注册</title>
+    <title>
+        @yield('title','莘莘')
+    </title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -32,22 +34,26 @@
                     <a class="nav-link" href="/club">社团</a>
                 </li>
             </ul>
-            <a href="/register" class="btn text-white">注册</a>
-            <a href="/login" class="btn text-white">登录</a>
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                    寒云
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">个人中心</a>
-                    <a class="dropdown-item" href="#">社团管理</a>
-                    <a class="dropdown-item" href="#">消息中心</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">退出</a>
+            @if(Auth::check())
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        寒云
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">个人中心</a>
+                        <a class="dropdown-item" href="#">社团管理</a>
+                        <a class="dropdown-item" href="#">消息中心</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">退出</a>
+                    </div>
                 </div>
-            </div>
+
+            @else
+                <a href="/register" class="btn text-white">注册</a>
+                <a href="/login" class="btn text-white">登录</a>
+            @endif
         </div>
 
     </div>
