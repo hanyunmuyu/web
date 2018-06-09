@@ -52,7 +52,12 @@
                         <a class="dropdown-item" href="#">社团管理</a>
                         <a class="dropdown-item" href="#">消息中心</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">退出</a>
+                        <form method="post" action="/logout">
+                            {{csrf_field()}}
+                            <button  class="dropdown-item" type="submit">
+                                退出
+                            </button>
+                        </form>
                     </div>
                 </div>
 

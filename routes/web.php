@@ -15,7 +15,9 @@ Auth::routes();
 Route::group(['namespace'=>'Home'],function (){
     Route::get('/', 'IndexController@index');
     Route::get('/register', 'RegisterController@index')->name('register');
+    Route::post('/register/register', 'RegisterController@doRegister');
     Route::get('/login', 'LoginController@index')->name('login');
+    Route::get('/logout', 'LoginController@index');
     Route::get('/user/edit', 'UserController@edit');
     Route::get('/club/add', 'ClubController@add');
     Route::get('/club', 'ClubController@index');
