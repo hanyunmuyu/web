@@ -30,8 +30,8 @@ class RegisterController extends Controller
         ];
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:6|max:255',
-            'password' => 'required|string|min:6',
-            'password_confirmation' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required|string|min:6',
         ], $messages);
         if ($validator->fails()) {
             return redirect('/register')
