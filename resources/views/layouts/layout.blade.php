@@ -54,7 +54,7 @@
                         <div class="dropdown-divider"></div>
                         <form method="post" action="/logout">
                             {{csrf_field()}}
-                            <button  class="dropdown-item" type="submit">
+                            <button class="dropdown-item" type="submit">
                                 退出
                             </button>
                         </form>
@@ -71,6 +71,34 @@
 </nav>
 <div class="container">
     @yield('content')
+</div>
+<div class="row bg-dark text-white text-left">
+    <footer class="container mt-5">
+        <div class="row">
+            <div class="col-4">
+                <h6>关于我们</h6>
+                <ul class="list-unstyled">
+                    <li>团队介绍</li>
+                    <li>产品介绍</li>
+                    <li>创意来源</li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <h6>联系我们</h6>
+                <ul class="list-unstyled">
+                    <li>电话：15701308875</li>
+                    <li>邮箱：1355081829@qq.com</li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <h6>加入我们</h6>
+                <ul class="list-unstyled">
+                    <li>招贤纳士</li>
+                    <li>赞助合作</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </div>
 </body>
 </html>

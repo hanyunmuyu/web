@@ -14,10 +14,10 @@
                          alt="First slide">
                     <div class="carousel-caption d-none d-md-block  text-primary">
                         <h5>
-                            Third slide label
+                            座右铭
                         </h5>
                         <p>
-                            Nulla vitae elit libero, a pharetra augue mollis interdum.
+                            人丑就要多读书
                         </p>
                     </div>
                 </div>
@@ -32,6 +32,7 @@
             </a>
         </div>
     </div>
+
     <p class="text-primary mt-1">
         社团推荐<a class="float-right" href="/club/list">更多>></a>
     </p>
