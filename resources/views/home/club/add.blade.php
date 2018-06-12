@@ -6,32 +6,34 @@
 
             <div class="card-body">
 
-                <form>
+                <form method="post" action="/club/save" enctype="multipart/form-data">
+                    {{csrf_field()}}
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">社团名称：</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="社团名称" required>
+                            <input type="text" class="form-control" id="name" name="club_name" placeholder="社团名称" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="info" class="col-sm-2 col-form-label">简介：</label>
                         <div class="col-sm-10">
-                            <textarea id="info" name="info" class="form-control" required></textarea>
+                            <textarea id="info" name="club_description" class="form-control" required></textarea>
                         </div>
                     </div>
-
-
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">类别：</label>
                         <div class="col-sm-10">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="catagory[]" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">体育</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="catagory[]"  value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">设计艺术</label>
-                            </div>
+                            @foreach($categories as $category)
+                                <div class="form-check form-check-inline">
+
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" name="catagory[]"
+                                                                                                 value="{{$category->id}}">
+                                        {{$category->name}}
+                                    </label>
+                                </div>
+
+                            @endforeach
                         </div>
                     </div>
                     <div class="form-group row">
