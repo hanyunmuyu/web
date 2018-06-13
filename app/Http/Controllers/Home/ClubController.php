@@ -28,9 +28,12 @@ class ClubController extends Controller
         return view('home.club.index');
     }
 
+    /**
+     * 社团列表
+     */
     public function list()
     {
-
+        return view('home.club.list');
     }
 
     public function add()

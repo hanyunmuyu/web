@@ -26,19 +26,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" style="display: flex">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-white" href="/">首页 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/school">高校</a>
+                    <a class="nav-link text-white" href="/school">高校</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/club">社团</a>
+                    <div class="btn-group text-white">
+                        <a class="nav-link text-white" href="/club">社团</a>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/club/list">社团列表</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/club">热议</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/club">热议</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/club">问答</a>
+                    <a class="nav-link text-white" href="/club">问答</a>
                 </li>
             </ul>
             @if(Auth::check())
