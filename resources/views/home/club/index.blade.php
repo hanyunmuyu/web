@@ -25,7 +25,7 @@
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                 <span class="ml-2 small">
-                                    <a class="mr-2" href="#">轮滑社团</a>{{date('Y-m-d H:i:s')}}
+                                    <a class="mr-2" href="/club/detail">轮滑社团</a>{{date('Y-m-d H:i:s')}}
                                 </span>
                                 </li>
                                 <li class="list-inline-item"><i class="fa fa-heart"></i>10000</li>

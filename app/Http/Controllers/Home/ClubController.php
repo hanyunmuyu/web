@@ -28,6 +28,14 @@ class ClubController extends Controller
         return view('home.club.index');
     }
 
+    /**社团详情
+     * @param Request $request
+     */
+    public function detail(Request $request)
+    {
+        $request->get('id');
+        return view('home.club.detail');
+    }
     /**
      * 社团列表
      */

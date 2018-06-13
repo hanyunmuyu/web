@@ -26,6 +26,8 @@ Route::group(['namespace'=>'Home'],function (){
     Route::get('/club/add', 'ClubController@add');
     //社团首页
     Route::get('/club', 'ClubController@index');
+    //社团详情
+    Route::get('/club/detail', 'ClubController@detail');
     //社团列表页
     Route::get('/club/list', 'ClubController@list');
     //高校首页
