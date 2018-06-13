@@ -69,7 +69,11 @@
                     <li class="list-group-item">计算机 <a href="/club/edit" class="text-info float-right small">管理</a></li>
                 </ul>
             </div>
-            <a class="btn btn-primary text-white" href="/club/add">新建社团</a>
+            <div class="row">
+                <div class="col-12">
+                    <a class="btn btn-primary text-white" href="/club/add"><i class="fa fa-plus pr-2"></i>新建社团</a>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
