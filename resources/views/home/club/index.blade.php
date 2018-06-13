@@ -24,14 +24,14 @@
                                  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg"
                                  alt="Card image">
                             <div class="card-body">
-                                <h5 class="card-title text-center">篮球协会</h5>
+                                <h6 class="card-title text-center">篮球协会</h6>
                                 <p class="card-text text-left small">
                                     篮球协会的口号是目的是增加大家之间的沟通交流
                                 </p>
                                 <div class="row">
                                     <ul class="list-inline">
-                                        <li class="list-inline-item">关注：1000</li>
-                                        <li class="list-inline-item">成员：100</li>
+                                        <li class="list-inline-item small">关注：1000</li>
+                                        <li class="list-inline-item small">成员：100</li>
                                     </ul>
                                 </div>
                             </div>
@@ -53,9 +53,12 @@
             <div class="card mb-2">
                 <div class="card-header">我的关注</div>
                 <ul class="list-group">
-                    <li class="list-group-item">好友：100<a href="/user/friend" class="text-info float-right small">查看</a></li>
-                    <li class="list-group-item">社团：100<a href="/user/club" class="text-info float-right small">查看</a></li>
-                    <li class="list-group-item">高校：100<a href="/user/school" class="text-info float-right small">查看</a></li>
+                    <li class="list-group-item">好友：100<a href="/user/friend" class="text-info float-right small">查看</a>
+                    </li>
+                    <li class="list-group-item">社团：100<a href="/user/club" class="text-info float-right small">查看</a>
+                    </li>
+                    <li class="list-group-item">高校：100<a href="/user/school" class="text-info float-right small">查看</a>
+                    </li>
                 </ul>
             </div>
             <div class="card mb-1">
