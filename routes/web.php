@@ -32,5 +32,11 @@ Route::group(['namespace'=>'Home'],function (){
     Route::get('/school', 'SchoolController@index');
     //高校列表页面
     Route::get('/school/list', 'SchoolController@list');
+
+
+    Route::group(['middleware'=>'auth'],function (){
+        //创建社团
+        Route::post('/club/save', 'ClubController@save');
+    });
 });
 Route::get('/home', 'HomeController@index')->name('home');
