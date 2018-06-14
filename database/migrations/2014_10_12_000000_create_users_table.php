@@ -19,8 +19,15 @@ class CreateUsersTable extends Migration
             $table->collation = 'utf8_general_ci';
 
             $table->increments('id');
+
             $table->string('name')->unique();
+
             $table->string('password');
+
+            $table->unsignedInteger('school_id')
+                ->default(0)
+                ->comment('校园的id，每个用户要属于一个校园');
+
             $table->rememberToken();
             $table->timestamps();
         });
