@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\ClubModel;
 use App\Repositories\Home\ClubCategoryRepository;
 use App\Repositories\Home\ClubRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ClubController extends Controller
 {
@@ -36,6 +38,7 @@ class ClubController extends Controller
         $request->get('id');
         return view('home.club.detail');
     }
+
     /**
      * 社团列表
      */
@@ -55,11 +58,33 @@ class ClubController extends Controller
         if (!Auth::check()) {
             return redirect('/login');
         }
+
+        $messages = [
+            'club_name.required' => '社团名称不可以为空',
+            'club_description.required' => '描述不可以为空'
+        ];
+        $validator = Validator::make($request->all(), [
+            'club_name' => 'required|string',
+            'club_description' => 'required|string'
+        ], $messages);
+        if ($validator->fails()) {
+            return redirect('/club/add')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $club = ClubModel::where('club_name', trim($request->get('club_name')))->first();
+        if ($club) {
+            return redirect('/club/add')
+                ->withErrors(['club_name' => '社团已经存在'])
+                ->withInput();
+        }
         $data['school_id'] = Auth::user()->school_id;
         $data['create_user_id'] = Auth::user()->id;
         $data['club_name'] = $request->get('club_name');
         $data['club_description'] = $request->get('club_description');
-        $data['category_ids'] =join(',', $request->get('catagory'));
+        $data['category_ids'] = join(',', $request->get('category'));
         $this->clubRepository->addClub($data);
+        return redirect('/club');
     }
 }

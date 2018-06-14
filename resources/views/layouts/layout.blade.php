@@ -13,6 +13,8 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
     <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/Validate/jquery.validate.min.js"></script>
+    <script src="/js/Validate/messages_zh.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>

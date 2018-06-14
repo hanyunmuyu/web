@@ -12,12 +12,16 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        for ($i = 0; $i < 88; $i++) {
-            \Illuminate\Support\Facades\DB::table('users')
-                ->insert([
-                    'name' => str_random(6),
-                    'password' => \Illuminate\Support\Facades\Hash::make('123456'),
-                ]);
+        $schoolList = \App\Models\SchoolModel::orderby(\Illuminate\Support\Facades\DB::raw('RAND()'))->get();
+        foreach ($schoolList as $school) {
+            for ($i = 0; $i < 2; $i++) {
+                \Illuminate\Support\Facades\DB::table('users')
+                    ->insert([
+                        'name' => str_random(6),
+                        'school_id' => $school->id,
+                        'password' => \Illuminate\Support\Facades\Hash::make('123456'),
+                    ]);
+            }
         }
     }
 }

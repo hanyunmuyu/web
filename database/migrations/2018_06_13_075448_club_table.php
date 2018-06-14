@@ -42,7 +42,7 @@ class ClubTable extends Migration
                 ->comment('创建社团的用户id');
 
 
-            $table->string('club_category_ids')
+            $table->string('category_ids')
                 ->nullable()
                 ->comment('社团分类：所有分类用逗号隔开');
 
