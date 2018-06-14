@@ -28,6 +28,10 @@ class ClubUserTable extends Migration
                 ->index()
                 ->comment('用户id');
 
+            $table->unsignedInteger('group_id')
+                ->default(0)
+                ->comment('用户组id');
+
             //先关注然后申请加入经过同意才是成员
             $table->unsignedTinyInteger('status')
                 ->default(1)
