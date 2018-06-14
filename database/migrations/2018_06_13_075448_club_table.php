@@ -29,6 +29,10 @@ class ClubTable extends Migration
                 ->nullable()
                 ->comment('社团的徽章');
 
+            $table->string('club_description')
+                ->nullable()
+                ->comment('社团描述');
+
             $table->unsignedInteger('school_id')
                 ->comment('校园id')
                 ->index();

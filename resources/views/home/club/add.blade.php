@@ -29,7 +29,7 @@
                                     <label class="form-check-label">
                                         <input class="form-check-input" type="checkbox" name="catagory[]"
                                                                                                  value="{{$category->id}}">
-                                        {{$category->name}}
+                                        {{$category->category_name}}
                                     </label>
                                 </div>
 

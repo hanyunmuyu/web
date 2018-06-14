@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 88; $i++) {
             \Illuminate\Support\Facades\DB::table('users')
                 ->insert([
                     'name' => str_random(6),

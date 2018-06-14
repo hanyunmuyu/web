@@ -22,7 +22,7 @@ class ClubCategory extends Migration
             $table->increments('id')
                 ->comment('社团分类id');
 
-            $table->string('club_category_name')
+            $table->string('category_name')
                 ->unique()
                 ->comment('社团分类名称');
 
