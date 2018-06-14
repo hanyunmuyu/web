@@ -43,7 +43,7 @@ class LoginController extends Controller
                 ->withErrors(['password' => '密码错误'])
                 ->withInput();
         }
-        Auth::login($user);
+        Auth::login($user,true);
         return redirect('/');
     }
     public function logout()

@@ -53,8 +53,8 @@
                         <label for="info" class="col-sm-2 col-form-label">徽标：</label>
                         <div class="col-sm-10">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile" required>
-                                <label class="custom-file-label" for="customFile">选择徽标</label>
+                                <input type="file" name="logo" class="custom-file-input" id="logo" required>
+                                <label class="custom-file-label" for="logo">选择徽标</label>
                             </div>
                         </div>
                     </div>

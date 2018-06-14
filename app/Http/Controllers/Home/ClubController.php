@@ -42,9 +42,12 @@ class ClubController extends Controller
     /**
      * 社团列表
      */
-    public function list()
+    public function list(Request $request)
     {
-        return view('home.club.list');
+        $id = $request->get('id');
+        $clubList = $this->clubRepository->getClubList($id);
+        $categories = $this->clubCategoryRepository->getClubCategories();
+        return view('home.club.list',['clubList'=>$clubList,'categories'=>$categories]);
     }
 
     public function add()
@@ -73,15 +76,27 @@ class ClubController extends Controller
                 ->withInput();
         }
 
-        $club = ClubModel::where('club_name', trim($request->get('club_name')))->first();
+        $club = ClubModel::where('club_name', trim($request->get('club_name')))
+            ->where('create_user_id', Auth::user()->id)
+            ->first();
         if ($club) {
             return redirect('/club/add')
                 ->withErrors(['club_name' => '社团已经存在'])
                 ->withInput();
         }
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo');
+            $uploads="/uploads/logo/"; //2、定义图片上传路径
+            $imagesName=$logo->getClientOriginalName(); //3、获取上传图片的文件名
+            $extension = $logo -> getClientOriginalExtension(); //4、获取上传图片的后缀名
+            $newImagesName=md5(time()).random_int(5,5).".".$extension;//5、重新命名上传文件名字
+            $logo->move($_SERVER['DOCUMENT_ROOT'].$uploads,$newImagesName); //6、使用move方法移动文件.
+            $club_logo = $uploads . $newImagesName;
+        }
         $data['school_id'] = Auth::user()->school_id;
         $data['create_user_id'] = Auth::user()->id;
         $data['club_name'] = $request->get('club_name');
+        $data['club_logo'] = $club_logo;
         $data['club_description'] = $request->get('club_description');
         $data['category_ids'] = join(',', $request->get('category'));
         $this->clubRepository->addClub($data);
