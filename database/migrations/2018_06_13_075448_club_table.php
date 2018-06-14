@@ -43,6 +43,7 @@ class ClubTable extends Migration
                 ->comment('社团分类：所有分类用逗号隔开');
 
             $table->unsignedTinyInteger('status')
+                ->default('1')
                 ->comment('状态：0：禁用；1：新申请；2：申请驳回；3：申请通过');
 
             $table->unique(['club_name', 'school_id']);
