@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class ClubCategory extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,20 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
+        //
+        Schema::create('club_category', function (Blueprint $table) {
 
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
 
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->increments('id')
+                ->comment('社团分类id');
+
+            $table->string('club_category_name')
+                ->unique()
+                ->comment('社团分类名称');
+
+            $table->timestamps();
         });
     }
 
@@ -31,6 +37,7 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        //
+        Schema::dropIfExists('club_category');
     }
 }
