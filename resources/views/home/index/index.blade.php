@@ -39,88 +39,41 @@
         <div class="row mt-1" id="list-tab" role="tablist">
             <div class="col-12">
                 <ul class="list-inline" id="tab">
-                    <li class="list-inline-item"><span class="btn btn-sm btn-primary">编程爱好者</span></li>
-                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
-                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
-                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
+                    @foreach($categories as $key=>$category)
+                        @if($key==0)
+                            <li class="list-inline-item"><span
+                                        class="btn btn-sm btn-primary">{{$category->category_name}}</span></li>
+                        @else
+                            <li class="list-inline-item"><span
+                                        class="btn btn-sm btn-outline-primary">{{$category->category_name}}</span></li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="tab-content" id="tabContent">
-                    <div class="tab-pane fade show active" role="tabpanel"
-                         aria-labelledby="list-home-list">
-                        <div class="row">
-                            <ul class="list-inline">
-                                @for($i=0;$i<5;$i++)
-                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                        <div>
-                                            <img class="img-thumbnail rounded"
-                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                        </div>
-                                        <div>
-                                            编程爱好者
-                                        </div>
-                                    </li>
-                                @endfor
-                            </ul>
+                    @foreach($clubList as $k=>$list)
+                        <div class="tab-pane fade @if($k==0)  show active @endif" role="tabpanel"
+                             aria-labelledby="list-home-list">
+                            <div class="row">
+                                <ul class="list-inline">
+                                    @foreach($list as $club)
+                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                            <div>
+                                                <img class="img-thumbnail rounded"
+                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                            </div>
+                                            <div class="text-truncate">
+                                                {{$club->club_name}}
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tab-pane fade" role="tabpanel"
-                         aria-labelledby="list-profile-list">
-                        <div class="row">
-                            <ul class="list-inline">
-                                @for($i=0;$i<5;$i++)
-                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                        <div>
-                                            <img class="img-thumbnail rounded"
-                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                        </div>
-                                        <div>
-                                            交际舞
-                                        </div>
-                                    </li>
-                                @endfor
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" role="tabpanel"
-                         aria-labelledby="list-messages-list">
-                        <div class="row">
-                            <ul class="list-inline">
-                                @for($i=0;$i<5;$i++)
-                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                        <div>
-                                            <img class="img-thumbnail rounded"
-                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                        </div>
-                                        <div>
-                                            机器人爱好者
-                                        </div>
-                                    </li>
-                                @endfor
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" role="tabpanel"
-                         aria-labelledby="list-settings-list">
-                        <div class="row">
-                            <ul class="list-inline">
-                                @for($i=0;$i<5;$i++)
-                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                        <div>
-                                            <img class="img-thumbnail rounded"
-                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                        </div>
-                                        <div>
-                                            旅游爱好者
-                                        </div>
-                                    </li>
-                                @endfor
-                            </ul>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

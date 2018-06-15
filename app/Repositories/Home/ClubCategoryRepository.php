@@ -13,8 +13,8 @@ use App\Models\ClubCategoryModel;
 
 class ClubCategoryRepository
 {
-    public function getClubCategories()
+    public function getClubCategories($limit=6)
     {
-        return ClubCategoryModel::all();
+        return ClubCategoryModel::orderby('id','desc')->limit($limit)->get();
     }
 }

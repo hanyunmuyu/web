@@ -19,15 +19,22 @@ class ClubRepository
         return ClubModel::insert($data);
     }
 
-    public function getClubList($categoryIds = null)
+    public function getClubList($categoryIds = null,$limit=16)
     {
         return ClubModel::where(function ($q) use ($categoryIds) {
             if ($categoryIds) {
                 $q->whereRaw("FIND_IN_SET({$categoryIds},category_ids)");
             }
-        })->orderby('id', 'desc')->paginate(16);
+        })->orderby('id', 'desc')->paginate($limit);
     }
 
+    public function getClubListRandom($categoryId,$limit=6)
+    {
+        return ClubModel::whereRaw("FIND_IN_SET({$categoryId},category_ids)")
+            ->orderBy(DB::raw("RAND()"))
+            ->limit($limit)
+            ->get();
+    }
     /**
      * 我管理的社团数量
      * @param $uid
