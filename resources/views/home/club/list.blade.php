@@ -27,11 +27,15 @@
                                    title="{{$club->club_description}}">
                                     {{$club->club_description}}
                                 </p>
-                                <div class="row">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item small">关注：1000</li>
-                                        <li class="list-inline-item small">成员：100</li>
-                                    </ul>
+                                <div class="row text-center">
+                                    <div class="col-12">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item small">
+                                                <span>关注：{{$club->favorite_number}}</span></li>
+                                            <li class="list-inline-item small"><span>成员：{{$club->member_number}}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="row text-center">
                                     <div class="col-12">
@@ -39,14 +43,7 @@
                                         <button onclick="attention({{$club->id}},2)" class="btn btn-primary">加入</button>
                                     </div>
                                 </div>
-                                <div class="row text-center">
-                                    <div class="col-12">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><span>关注：{{$club->favorite_number}}</span></li>
-                                            <li class="list-inline-item"><span>成员：{{$club->member_number}}</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
