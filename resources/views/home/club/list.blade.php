@@ -4,8 +4,10 @@
         <div class="row">
             <ul class="list-inline ml-5">
                 <li class="list-inline-item"><a class="nav-link" href="/club/list">全部</a></li>
-            @foreach($categories as $category)
-                    <li class="list-inline-item"><a class="nav-link" href="/club/list?id={{$category->id}}">{{$category->category_name}}</a></li>
+                @foreach($categories as $category)
+                    <li class="list-inline-item"><a class="nav-link"
+                                                    href="/club/list?id={{$category->id}}">{{$category->category_name}}</a>
+                    </li>
                 @endforeach
             </ul>
         </div>
@@ -29,6 +31,12 @@
                                         <li class="list-inline-item small">关注：1000</li>
                                         <li class="list-inline-item small">成员：100</li>
                                     </ul>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-12">
+                                        <button onclick="attention({{$club->id}},1)" class="btn btn-primary">关注</button>
+                                        <button onclick="attention({{$club->id}},2)" class="btn btn-primary">加入</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -69,4 +77,39 @@
             </div>
         </div>
     </div>
+
+    <div id="attention" class="modal fade bd-example-modal-sm border-success" tabindex="-1" role="dialog"
+         aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <h6 class="text-success text-center" id="msg">成功</h6>
+            </div>
+        </div>
+    </div>
+    {{csrf_field()}}
+@endsection
+@section('js')
+    <script>
+        function attention(id, status) {
+            var _token = $('input[name=_token]').val();
+            if (status == 1) {
+                $('#msg').text('关注成功');
+            } else {
+                $('#msg').text('申请加入成功！等待管理员确认!');
+            }
+            $.ajax({
+                url: '/club/attention',
+                method: 'post',
+                data: {id: id, status: status, _token: _token},
+                type: 'json',
+                success: function (data) {
+                    $('#msg').text(data.msg);
+                    $('#attention').modal('toggle');
+                    setTimeout(function () {
+                        $('#attention').modal('hide')
+                    }, 2000)
+                }
+            });
+        }
+    </script>
 @endsection

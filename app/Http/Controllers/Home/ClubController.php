@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Models\ClubModel;
 use App\Repositories\Home\ClubCategoryRepository;
 use App\Repositories\Home\ClubRepository;
+use App\Repositories\Home\ClubUserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -14,14 +15,17 @@ class ClubController extends Controller
 {
     private $clubCategoryRepository;
     private $clubRepository;
+    private $clubUserRepository;
 
     public function __construct(
         ClubCategoryRepository $clubCategoryRepository,
-        ClubRepository $clubRepository
+        ClubRepository $clubRepository,
+        ClubUserRepository $clubUserRepository
     )
     {
         $this->clubCategoryRepository = $clubCategoryRepository;
         $this->clubRepository = $clubRepository;
+        $this->clubUserRepository = $clubUserRepository;
     }
 
     //
@@ -47,7 +51,7 @@ class ClubController extends Controller
         $id = $request->get('id');
         $clubList = $this->clubRepository->getClubList($id);
         $categories = $this->clubCategoryRepository->getClubCategories();
-        return view('home.club.list',['clubList'=>$clubList,'categories'=>$categories]);
+        return view('home.club.list', ['clubList' => $clubList, 'categories' => $categories]);
     }
 
     public function add()
@@ -86,11 +90,11 @@ class ClubController extends Controller
         }
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
-            $uploads="/uploads/logo/"; //2、定义图片上传路径
-            $imagesName=$logo->getClientOriginalName(); //3、获取上传图片的文件名
-            $extension = $logo -> getClientOriginalExtension(); //4、获取上传图片的后缀名
-            $newImagesName=md5(time()).random_int(5,5).".".$extension;//5、重新命名上传文件名字
-            $logo->move($_SERVER['DOCUMENT_ROOT'].$uploads,$newImagesName); //6、使用move方法移动文件.
+            $uploads = "/uploads/logo/"; //2、定义图片上传路径
+            $imagesName = $logo->getClientOriginalName(); //3、获取上传图片的文件名
+            $extension = $logo->getClientOriginalExtension(); //4、获取上传图片的后缀名
+            $newImagesName = md5(time()) . random_int(5, 5) . "." . $extension;//5、重新命名上传文件名字
+            $logo->move($_SERVER['DOCUMENT_ROOT'] . $uploads, $newImagesName); //6、使用move方法移动文件.
             $club_logo = $uploads . $newImagesName;
         }
         $data['school_id'] = Auth::user()->school_id;
@@ -101,5 +105,34 @@ class ClubController extends Controller
         $data['category_ids'] = join(',', $request->get('category'));
         $this->clubRepository->addClub($data);
         return redirect('/club');
+    }
+
+    public function attention(Request $request)
+    {
+        $id = $request->get('id');
+        $status = $request->get('status');
+        if (!Auth::check()) {
+            return ['code' => 1, 'msg' => 'error'];
+        }
+        $auth = Auth::user();
+        $clubUser = $this->clubUserRepository->getClubUser($id, $auth->id);
+        if ($clubUser) {
+            if ($clubUser->status >= 1 && $status == 1) {
+                return ['code' => 0, 'status' => 'error', 'msg' => '已经关注'];
+            } elseif ($clubUser->status >= 2 && $status == 2) {
+                return ['code' => 0, 'status' => 'error', 'msg' => '已经申请加入'];
+            } elseif ($clubUser->status == 3) {
+                return ['code' => 0, 'status' => 'error', 'msg' => '已经加入'];
+            }
+        }
+        $res = $this->clubUserRepository->payAttention($id, $auth->id, $status);
+        if ($res) {
+            if ($status == 1) {
+                return ['code' => 1, 'status' => 'ok', 'msg' => '关注成功'];
+            } elseif ($status == 2) {
+                return ['code' => 1, 'status' => 'ok', 'msg' => '申请加入成功'];
+            }
+        }
+        return ['code' => 0, 'status' => 'error', 'msg' => '失败'];
     }
 }
