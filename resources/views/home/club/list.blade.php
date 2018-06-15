@@ -20,10 +20,10 @@
                         <div class="card">
                             <img class="card-img-top"
                                  src="{{$club->club_logo}}"
-                                 alt="Card image">
+                                 alt="社团logo">
                             <div class="card-body">
-                                <h6 class="card-title text-center">{{$club->club_name}}</h6>
-                                <p class="card-text text-left small">
+                                <h6 class="card-title text-center text-truncate ">{{$club->club_name}}</h6>
+                                <p class="card-text text-left small text-truncate ">
                                     {{$club->club_description}}
                                 </p>
                                 <div class="row">
@@ -119,10 +119,14 @@
                 type: 'json',
                 success: function (data) {
                     $('#msg').text(data.msg);
-                    $('#attention').modal('toggle');
-                    setTimeout(function () {
-                        $('#attention').modal('hide')
-                    }, 2000)
+                    if (data.status == 'ok') {
+                        $('#attention').modal('toggle');
+                        setTimeout(function () {
+                            $('#attention').modal('hide')
+                        }, 2000)
+                    }else {
+                        window.location.href = '/login';
+                    }
                 }
             });
         }

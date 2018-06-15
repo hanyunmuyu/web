@@ -59,8 +59,8 @@ class ClubController extends Controller
             $clubMyManage = $this->clubRepository->getClubMyManage($user->id);
             $data['myClubNumber'] = $myClubNumber;
             $data['clubMyManage'] = $clubMyManage;
-        }else{
-            $clubs=$this->clubRepository->getClubRandom();
+        } else {
+            $clubs = $this->clubRepository->getClubRandom();
             $data['clubs'] = $clubs;
         }
         return view('home.club.list', $data);
@@ -124,7 +124,7 @@ class ClubController extends Controller
         $id = $request->get('id');
         $status = $request->get('status');
         if (!Auth::check()) {
-            return ['code' => 1, 'msg' => 'error'];
+            return ['code' => 0, 'status' => 'error', 'msg' => '请先登录'];
         }
         $auth = Auth::user();
         $clubUser = $this->clubUserRepository->getClubUser($id, $auth->id);
