@@ -49,9 +49,21 @@ class ClubController extends Controller
     public function list(Request $request)
     {
         $id = $request->get('id');
+        $user = Auth::user();
         $clubList = $this->clubRepository->getClubList($id);
         $categories = $this->clubCategoryRepository->getClubCategories();
-        return view('home.club.list', ['clubList' => $clubList, 'categories' => $categories]);
+        $data['categories'] = $categories;
+        $data['clubList'] = $clubList;
+        if (Auth::check()) {
+            $myClubNumber = $this->clubUserRepository->getMyClubNumber($user->id);
+            $clubMyManage = $this->clubRepository->getClubMyManage($user->id);
+            $data['myClubNumber'] = $myClubNumber;
+            $data['clubMyManage'] = $clubMyManage;
+        }else{
+            $clubs=$this->clubRepository->getClubRandom();
+            $data['clubs'] = $clubs;
+        }
+        return view('home.club.list', $data);
     }
 
     public function add()

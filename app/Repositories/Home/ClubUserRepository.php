@@ -9,6 +9,7 @@
 namespace App\Repositories\Home;
 
 
+use App\Models\ClubModel;
 use App\Models\ClubUserModel;
 
 class ClubUserRepository
@@ -34,5 +35,16 @@ class ClubUserRepository
         return ClubUserModel::where('club_id', $clubId)
             ->where('user_id', $uid)
             ->first();
+    }
+
+    /**
+     * 关注的社团数量
+     * @param $uid
+     * @return int
+     */
+    public function getMyClubNumber($uid): int
+    {
+        return ClubUserModel::where('user_id', $uid)
+            ->count();
     }
 }

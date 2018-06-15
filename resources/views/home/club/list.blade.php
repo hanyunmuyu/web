@@ -48,28 +48,43 @@
             </div>
         </div>
         <div class="col-3">
-            <div class="card mb-2">
-                <div class="card-header">我的关注</div>
-                <ul class="list-group">
-                    <li class="list-group-item">好友：100<a href="/user/friend" class="text-info float-right small">查看</a>
-                    </li>
-                    <li class="list-group-item">社团：100<a href="/user/club" class="text-info float-right small">查看</a>
-                    </li>
-                    <li class="list-group-item">高校：100<a href="/user/school" class="text-info float-right small">查看</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="card mb-1">
-                <div class="card-header">管理的社团</div>
-                <ul class="list-group">
-                    <li class="list-group-item">计算机 <a href="/club/edit" class="text-info float-right small">管理</a></li>
-                    <li class="list-group-item">计算机 <a href="/club/edit" class="text-info float-right small">管理</a></li>
-                    <li class="list-group-item">计算机 <a href="/club/edit" class="text-info float-right small">管理</a></li>
-                    <li class="list-group-item">计算机 <a href="/club/edit" class="text-info float-right small">管理</a></li>
-                    <li class="list-group-item">计算机 <a href="/club/edit" class="text-info float-right small">管理</a></li>
-                    <li class="list-group-item">计算机 <a href="/club/edit" class="text-info float-right small">管理</a></li>
-                </ul>
-            </div>
+            @if(\Illuminate\Support\Facades\Auth::check())
+                <div class="card mb-2">
+                    <div class="card-header">我的关注</div>
+                    <ul class="list-group">
+                        <li class="list-group-item">好友：100<a href="/user/friend"
+                                                             class="text-info float-right small">查看</a>
+                        </li>
+                        <li class="list-group-item">社团：{{$myClubNumber}}<a href="/user/club"
+                                                                           class="text-info float-right small">查看</a>
+                        </li>
+                        <li class="list-group-item">高校：100<a href="/user/school"
+                                                             class="text-info float-right small">查看</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card mb-1">
+                    <div class="card-header">管理的社团</div>
+                    <ul class="list-group">
+                        @foreach($clubMyManage as $value)
+                            <li class="list-group-item">{{$value->club_name}} <a href="/club/edit?id={{$value->id}}"
+                                                                                 class="text-info float-right small">管理</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @else
+                <div class="card mb-1">
+                    <div class="card-header">社团推荐</div>
+                    <ul class="list-group">
+                        @foreach($clubs as $value)
+                            <li class="list-group-item">{{$value->club_name}} <a href="/club/edit?id={{$value->id}}"
+                                                                                 class="text-info float-right small">查看</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-12 mb-2">
                     <a class="btn btn-primary text-white" href="/club/add"><i class="fa fa-plus pr-2"></i>新建社团</a>
