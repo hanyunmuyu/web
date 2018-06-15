@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
                 ->default(0)
                 ->comment('校园的id，每个用户要属于一个校园');
 
-            $table->rememberToken();
+            $table->rememberToken()->index();
             $table->timestamps();
         });
     }
