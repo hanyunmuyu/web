@@ -36,93 +36,89 @@
         <div class="col-12 text-primary mt-1">
             社团推荐<a class="float-right" href="/club/list">更多>></a>
         </div>
-        <div class="row">
-            <div class="col-2">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list"
-                       href="#list-home" role="tab" aria-controls="home">运动体育</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
-                       href="#list-profile" role="tab" aria-controls="profile">设计艺术</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
-                       href="#list-messages" role="tab" aria-controls="messages">电子</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
-                       href="#list-settings" role="tab" aria-controls="settings">交友</a>
-                </div>
+        <div class="row mt-1" id="list-tab" role="tablist">
+            <div class="col-12">
+                <ul class="list-inline" id="tab">
+                    <li class="list-inline-item"><span class="btn btn-sm btn-primary">编程爱好者</span></li>
+                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
+                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
+                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
+                </ul>
             </div>
-            <div class="col-10">
-                <div class="row">
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="list-home" role="tabpanel"
-                             aria-labelledby="list-home-list">
-                            <div class="row">
-                                <ul class="list-inline">
-                                    @for($i=0;$i<10;$i++)
-                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                            <div>
-                                                <img class="img-thumbnail rounded"
-                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                            </div>
-                                            <div>
-                                                编程爱好者
-                                            </div>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="tab-content" id="tabContent">
+                    <div class="tab-pane fade show active" role="tabpanel"
+                         aria-labelledby="list-home-list">
+                        <div class="row">
+                            <ul class="list-inline">
+                                @for($i=0;$i<5;$i++)
+                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                        <div>
+                                            <img class="img-thumbnail rounded"
+                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                        </div>
+                                        <div>
+                                            编程爱好者
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
                         </div>
-                        <div class="tab-pane fade" id="list-profile" role="tabpanel"
-                             aria-labelledby="list-profile-list">
-                            <div class="row">
-                                <ul class="list-inline">
-                                    @for($i=0;$i<10;$i++)
-                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                            <div>
-                                                <img class="img-thumbnail rounded"
-                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                            </div>
-                                            <div>
-                                                交际舞
-                                            </div>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel"
+                         aria-labelledby="list-profile-list">
+                        <div class="row">
+                            <ul class="list-inline">
+                                @for($i=0;$i<5;$i++)
+                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                        <div>
+                                            <img class="img-thumbnail rounded"
+                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                        </div>
+                                        <div>
+                                            交际舞
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
                         </div>
-                        <div class="tab-pane fade" id="list-messages" role="tabpanel"
-                             aria-labelledby="list-messages-list">
-                            <div class="row">
-                                <ul class="list-inline">
-                                    @for($i=0;$i<10;$i++)
-                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                            <div>
-                                                <img class="img-thumbnail rounded"
-                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                            </div>
-                                            <div>
-                                                机器人爱好者
-                                            </div>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel"
+                         aria-labelledby="list-messages-list">
+                        <div class="row">
+                            <ul class="list-inline">
+                                @for($i=0;$i<5;$i++)
+                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                        <div>
+                                            <img class="img-thumbnail rounded"
+                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                        </div>
+                                        <div>
+                                            机器人爱好者
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
                         </div>
-                        <div class="tab-pane fade" id="list-settings" role="tabpanel"
-                             aria-labelledby="list-settings-list">
-                            <div class="row">
-                                <ul class="list-inline">
-                                    @for($i=0;$i<10;$i++)
-                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                            <div>
-                                                <img class="img-thumbnail rounded"
-                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                            </div>
-                                            <div>
-                                                旅游爱好者
-                                            </div>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel"
+                         aria-labelledby="list-settings-list">
+                        <div class="row">
+                            <ul class="list-inline">
+                                @for($i=0;$i<5;$i++)
+                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                        <div>
+                                            <img class="img-thumbnail rounded"
+                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                        </div>
+                                        <div>
+                                            旅游爱好者
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -161,103 +157,98 @@
         <div class="col-12 text-primary mt-1">
             热门高校<a class="float-right" href="/school/list">更多>></a>
         </div>
-        <div class="row">
-            <div class="col-2">
-                <div class="list-group" id="list-tab1" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-history-list"
-                       data-toggle="list"
-                       href="#list-history" role="tab" aria-controls="home">文史类</a>
-                    <a class="list-group-item list-group-item-action" id="list-comprehensive-list"
-                       data-toggle="list"
-                       href="#list-comprehensive" role="tab" aria-controls="profile">综合性</a>
-                    <a class="list-group-item list-group-item-action" id="list-economic-list" data-toggle="list"
-                       href="#list-economic" role="tab" aria-controls="messages">经济类</a>
-                    <a class="list-group-item list-group-item-action" id="list-management-list" data-toggle="list"
-                       href="#list-management" role="tab" aria-controls="settings">工商管理</a>
-                </div>
+
+
+        <div class="row mt-1" id="list-tab" role="tablist">
+            <div class="col-12">
+                <ul class="list-inline" id="tabSchool">
+                    <li class="list-inline-item"><span class="btn btn-sm btn-primary">编程爱好者</span></li>
+                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
+                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
+                    <li class="list-inline-item"><span class="btn btn-sm btn-outline-primary">编程爱好者</span></li>
+                </ul>
             </div>
-            <div class="col-10">
-                <div class="row">
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="list-history" role="tabpanel"
-                             aria-labelledby="list-history-list">
-                            <div class="row">
-                                <ul class="list-inline">
-                                    @for($i=0;$i<10;$i++)
-                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                            <div>
-                                                <img class="img-thumbnail rounded"
-                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                            </div>
-                                            <div>
-                                                编程爱好者
-                                            </div>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="tab-content" id="tabSchoolContent">
+                    <div class="tab-pane fade show active"
+                         aria-labelledby="list-home-list">
+                        <div class="row">
+                            <ul class="list-inline">
+                                @for($i=0;$i<5;$i++)
+                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                        <div>
+                                            <img class="img-thumbnail rounded"
+                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                        </div>
+                                        <div>
+                                            编程爱好者
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
                         </div>
-                        <div class="tab-pane fade" id="list-comprehensive" role="tabpanel"
-                             aria-labelledby="list-comprehensive-list">
-                            <div class="row">
-                                <ul class="list-inline">
-                                    @for($i=0;$i<10;$i++)
-                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                            <div>
-                                                <img class="img-thumbnail rounded"
-                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                            </div>
-                                            <div>
-                                                交际舞
-                                            </div>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="tab-pane fade"
+                         aria-labelledby="list-profile-list">
+                        <div class="row">
+                            <ul class="list-inline">
+                                @for($i=0;$i<5;$i++)
+                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                        <div>
+                                            <img class="img-thumbnail rounded"
+                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                        </div>
+                                        <div>
+                                            交际舞
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
                         </div>
-                        <div class="tab-pane fade" id="list-economic" role="tabpanel"
-                             aria-labelledby="list-economic-list">
-                            <div class="row">
-                                <ul class="list-inline">
-                                    @for($i=0;$i<10;$i++)
-                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                            <div>
-                                                <img class="img-thumbnail rounded"
-                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                            </div>
-                                            <div>
-                                                机器人爱好者
-                                            </div>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="tab-pane fade"
+                         aria-labelledby="list-messages-list">
+                        <div class="row">
+                            <ul class="list-inline">
+                                @for($i=0;$i<5;$i++)
+                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                        <div>
+                                            <img class="img-thumbnail rounded"
+                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                        </div>
+                                        <div>
+                                            机器人爱好者
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
                         </div>
-                        <div class="tab-pane fade" id="list-management" role="tabpanel"
-                             aria-labelledby="list-management-list">
-                            <div class="row">
-                                <ul class="list-inline">
-                                    @for($i=0;$i<10;$i++)
-                                        <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
-                                            <div>
-                                                <img class="img-thumbnail rounded"
-                                                     src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
-                                            </div>
-                                            <div>
-                                                旅游爱好者
-                                            </div>
-                                        </li>
-                                    @endfor
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="tab-pane fade"
+                         aria-labelledby="list-settings-list">
+                        <div class="row">
+                            <ul class="list-inline">
+                                @for($i=0;$i<5;$i++)
+                                    <li class="list-inline-item col-5 col-sm-4 col-md-2 text-center">
+                                        <div>
+                                            <img class="img-thumbnail rounded"
+                                                 src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg">
+                                        </div>
+                                        <div>
+                                            旅游爱好者
+                                        </div>
+                                    </li>
+                                @endfor
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 text-primary mt-1">
-            高校热门<a class="float-right" href="/club">更多>></a>
-        </div>
+
+
         <div class="row">
             @for($i=0;$i<6;$i++)
                 <div class="row">
@@ -285,4 +276,28 @@
             @endfor
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        $(function () {
+            $('#tab>li').on('click', function (e) {
+                e.preventDefault()
+                // tabContent
+                // alert()
+                $(this).siblings().find('span').addClass('btn-outline-primary')
+                $(this).find('span').removeClass('btn-outline-primary').addClass('btn-primary')
+                $('#tabContent .tab-pane').removeClass('show').removeClass('active')
+                $('#tabContent .tab-pane').eq($(this).index()).addClass('show').addClass('active')
+            })
+            $('#tabSchool>li').on('click', function (e) {
+                e.preventDefault()
+                // tabContent
+                // alert()
+                $(this).siblings().find('span').addClass('btn-outline-primary')
+                $(this).find('span').removeClass('btn-outline-primary').addClass('btn-primary')
+                $('#tabSchoolContent .tab-pane').removeClass('show').removeClass('active')
+                $('#tabSchoolContent .tab-pane').eq($(this).index()).addClass('show').addClass('active')
+            })
+        })
+    </script>
 @endsection
