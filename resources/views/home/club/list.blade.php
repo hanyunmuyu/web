@@ -23,7 +23,8 @@
                                  alt="社团logo">
                             <div class="card-body">
                                 <h6 class="card-title text-center text-truncate ">{{$club->club_name}}</h6>
-                                <p class="card-text text-left small text-truncate ">
+                                <p class="card-text text-left text-truncate " data-toggle="tooltip" data-placement="top"
+                                   title="{{$club->club_description}}">
                                     {{$club->club_description}}
                                 </p>
                                 <div class="row">
@@ -36,6 +37,14 @@
                                     <div class="col-12">
                                         <button onclick="attention({{$club->id}},1)" class="btn btn-primary">关注</button>
                                         <button onclick="attention({{$club->id}},2)" class="btn btn-primary">加入</button>
+                                    </div>
+                                </div>
+                                <div class="row text-center">
+                                    <div class="col-12">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><span>关注：{{$club->favorite_number}}</span></li>
+                                            <li class="list-inline-item"><span>成员：{{$club->member_number}}</span></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -105,6 +114,8 @@
 @endsection
 @section('js')
     <script>
+        $('[data-toggle="tooltip"]').tooltip();
+
         function attention(id, status) {
             var _token = $('input[name=_token]').val();
             if (status == 1) {
@@ -119,12 +130,12 @@
                 type: 'json',
                 success: function (data) {
                     $('#msg').text(data.msg);
-                    if (data.status == 'ok') {
+                    if (data.status != 'failed') {
                         $('#attention').modal('toggle');
                         setTimeout(function () {
                             $('#attention').modal('hide')
                         }, 2000)
-                    }else {
+                    } else if (data.status == 'failed') {
                         window.location.href = '/login';
                     }
                 }

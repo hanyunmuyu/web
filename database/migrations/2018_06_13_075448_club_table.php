@@ -41,6 +41,13 @@ class ClubTable extends Migration
                 ->index()
                 ->comment('创建社团的用户id');
 
+            $table->unsignedInteger('favorite_number')
+                ->default(1)
+                ->comment('关注的人数');
+
+            $table->unsignedInteger('member_number')
+                ->default(1)
+                ->comment('成员数量');
 
             $table->string('category_ids')
                 ->nullable()

@@ -19,6 +19,12 @@ class ClubUserRepository
         $res = ClubUserModel::where('club_id', $clubId)
             ->where('user_id', $uid)
             ->first();
+        if ($status == 1) {
+            ClubModel::where('id', $clubId)->increment('favorite_number');
+        }
+        if ($status == 3) {
+            ClubModel::where('id', $clubId)->increment('member_number');
+        }
         if ($res) {
             $res->status = $status;
             return $res->save();
