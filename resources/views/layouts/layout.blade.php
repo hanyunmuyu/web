@@ -61,9 +61,9 @@
                         寒云
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">个人中心</a>
-                        <a class="dropdown-item" href="#">社团管理</a>
-                        <a class="dropdown-item" href="#">消息中心</a>
+                        <a class="dropdown-item" href="/user/center">个人中心</a>
+                        <a class="dropdown-item" href="#">消息中心<span class="badge badge-pill badge-primary">10</span>
+                        </a>
                         <div class="dropdown-divider"></div>
                         <form method="post" action="/logout">
                             {{csrf_field()}}

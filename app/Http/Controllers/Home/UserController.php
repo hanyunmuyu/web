@@ -12,4 +12,14 @@ class UserController extends Controller
     {
         return view('home.user.edit');
     }
+
+    public function center()
+    {
+        return view('home.user.center');
+    }
+
+    public function auth()
+    {
+        return view('home.user.auth');
+    }
 }

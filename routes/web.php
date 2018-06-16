@@ -20,8 +20,6 @@ Route::group(['namespace'=>'Home'],function (){
     //登录
     Route::get('/login', 'LoginController@index')->name('login');
     Route::post('/login/doLogin', 'LoginController@doLogin');
-    //编辑用户信息
-    Route::get('/user/edit', 'UserController@edit');
     //创建社团
     Route::get('/club/add', 'ClubController@add');
     //社团首页
@@ -41,6 +39,15 @@ Route::group(['namespace'=>'Home'],function (){
     Route::group(['middleware'=>'auth'],function (){
         //创建社团
         Route::post('/club/save', 'ClubController@save');
+
+
+        //编辑用户信息
+        Route::get('/user/edit', 'UserController@edit');
+        //个人中心
+        Route::get('/user/center', 'UserController@center');
+        //实名认证
+        Route::get('/user/auth', 'UserController@auth');
+
     });
 });
 Route::get('/home', 'HomeController@index')->name('home');

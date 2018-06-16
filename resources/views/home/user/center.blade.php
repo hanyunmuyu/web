@@ -1,17 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     <div class="row mt-2">
-        <div class="col-2">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">编辑个人资料</a>
-                <a href="#" class="list-group-item list-group-item-action">实名认证</a>
-                <a href="#" class="list-group-item list-group-item-action">我的社团</a>
-                <a href="#" class="list-group-item list-group-item-action">实名认证</a>
-                <a href="#" class="list-group-item list-group-item-action">我的消息
-                    <span class="badge badge-pill badge-primary">10</span>
-                </a>
-            </div>
-        </div>
+        @include('home.user.left')
         <div class="col-10">
             <div class="row">
                 <div class="col-12">
