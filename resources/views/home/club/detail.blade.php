@@ -34,23 +34,25 @@
     </div>
     <div class="row mt-2">
         <div class="media mb-2">
-            <img class="align-self-center mr-2 col-2 rounded"
+            <img class="align-self-center mr-2 col-3 rounded"
                  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg"
                  alt="社团动态">
             <div class="media-body">
                 <div class="row">
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <h5 class="text-lg-center d-inline mr-5">莘莘团</h5>
-                        </li>
-                        <li class="list-inline-item small">关注：10000</li>
-                        <li class="list-inline-item small">成员：10000</li>
-                    </ul>
-                    <button class="btn btn-primary ml-5"><i class="fa fa-plus mr-2"></i>关注</button>
-                    <button class="btn btn-outline-primary ml-5"><i class="fa fa-check mr-2"></i>已经关注</button>
+                    <div class="col-6">
+                        <p class="text-truncate">莘莘团</p>
+                        <p class="text-truncate small"><a href="#">河南工业大学</a></p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item small">关注：10000</li>
+                            <li class="list-inline-item small">成员：10000</li>
+                        </ul>
+                        <p class="text-truncate">莘莘团，一个致力于构建诚信校园的圈子</p>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-primary ml-5"><i class="fa fa-plus mr-2"></i>关注</button>
+                        <button class="btn btn-outline-primary ml-5"><i class="fa fa-check mr-2"></i>已经关注</button>
+                    </div>
                 </div>
-
-                <p class="text-truncate">明德、求是、拓新、笃行</p>
             </div>
         </div>
     </div>
@@ -116,7 +118,7 @@
             </div>
             <div class="card mb-1">
                 <div class="card mb-1">
-                    <div class="card-header">名人榜</div>
+                    <div class="card-header">活跃成员</div>
                     <ul class="list-group">
                         @for($i=0;$i<4;$i++)
                             <li class="list-group-item">

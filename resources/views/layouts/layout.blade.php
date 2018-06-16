@@ -41,7 +41,7 @@
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/club/list">社团列表</a>
+                            <a class="dropdown-item" href="/club/list">找社团</a>
                         </div>
                     </div>
                 </li>
