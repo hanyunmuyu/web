@@ -27,6 +27,9 @@ class CreateUsersTable extends Migration
             $table->string('nick_name')
                 ->nullable()
                 ->comment('昵称');
+            $table->string('avatar')
+                ->nullable()
+                ->comment('用户头像');
 
             $table->string('true_name')
                 ->index()
