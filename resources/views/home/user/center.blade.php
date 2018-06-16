@@ -11,10 +11,11 @@
                         <div class="card-body">
 
                             <form>
+                                {{csrf_field()}}
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-2 col-form-label">用户名：</label>
+                                    <label for="name" class="col-sm-2 col-form-label">昵称：</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="用户名"
+                                        <input type="text" class="form-control" id="nick_name" name="nick_name" placeholder="昵称"
                                                required>
                                     </div>
                                 </div>

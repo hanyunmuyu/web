@@ -13,6 +13,10 @@ class UserController extends Controller
         return view('home.user.edit');
     }
 
+    public function update(Request $request)
+    {
+
+    }
     public function center()
     {
         return view('home.user.center');
