@@ -47,6 +47,8 @@ Route::group(['namespace'=>'Home'],function (){
         Route::get('/user/center', 'UserController@center');
         //实名认证
         Route::get('/user/auth', 'UserController@auth');
+        //更新用户信息
+        Route::post('/user/update', 'UserController@update');
 
     });
 });

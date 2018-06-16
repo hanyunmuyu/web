@@ -49,6 +49,11 @@ class CreateUsersTable extends Migration
                 ->nullable()
                 ->comment('学生证号');
 
+            $table->char('phone', 11)
+                ->nullable()
+                ->unique()
+                ->comment('手机号');
+
             $table->string('password');
 
             $table->unsignedTinyInteger('gender')

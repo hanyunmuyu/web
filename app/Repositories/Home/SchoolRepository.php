@@ -20,4 +20,14 @@ class SchoolRepository
             ->limit($limit)
             ->get();
     }
+
+    public function getSchoolList()
+    {
+        return SchoolModel::orderby('id', 'desc')->get();
+    }
+
+    public function getSchoolById($schoolId)
+    {
+        return SchoolModel::where('id', $schoolId)->first();
+    }
 }
