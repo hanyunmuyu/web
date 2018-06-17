@@ -3,18 +3,25 @@
 namespace App\Http\Controllers\Home;
 
 use App\Repositories\Home\SchoolRepository;
+use App\Repositories\Home\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     private $schoolRepository;
+    private $userRepository;
 
-    public function __construct(SchoolRepository $schoolRepository)
+    public function __construct(
+        SchoolRepository $schoolRepository,
+        UserRepository $userRepository
+    )
     {
         $this->schoolRepository = $schoolRepository;
+        $this->userRepository = $userRepository;
     }
 
     //
@@ -28,15 +35,12 @@ class UserController extends Controller
         $nick_name = $request->get('nick_name');
         $gender = $request->get('gender');
         $school_id = $request->get('school');
-        $phone = $request->get('phone');
-        $user = User::where('id', Auth::user()->id)->first();
+        $user = Auth::user();
+        $user = $this->userRepository->getUserById($user->id);
         $user->nick_name = $nick_name;
         $user->gender = $gender;
         if ($user->school_id == 0) {
             $user->school_id = $school_id ?? 0;
-        }
-        if (!$user->phone) {
-            $user->phone = $phone;
         }
         $user->save();
         return redirect('/user/center');
@@ -58,5 +62,9 @@ class UserController extends Controller
     public function auth()
     {
         return view('home.user.auth');
+    }
+    public function student()
+    {
+        return view('home.user.student');
     }
 }

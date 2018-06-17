@@ -40,6 +40,14 @@ class CreateUsersTable extends Migration
                 ->nullable()
                 ->commebt('身份证号');
 
+            $table->string('id_card_a')
+                ->nullable()
+                ->comment('身份证正面');
+
+            $table->string('id_card_b')
+                ->nullable()
+                ->comment('身份证反面');
+
             $table->string('student_card_a')
                 ->nullable()
                 ->comment('学生证正面');

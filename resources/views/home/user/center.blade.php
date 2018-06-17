@@ -39,18 +39,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-2 col-form-label">电话：</label>
-                                    <div class="col-sm-10">
-                                        @if(!$user->phone)
-                                            <input type="text" class="form-control" id="phone" name="phone"
-                                                   placeholder="电话"
-                                                   required>
-                                        @else
-                                            {{$user->phone}}
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label for="school" class="col-sm-2 col-form-label">选择学校：</label>
                                     <div class="col-sm-8">
                                         @if($user->school_id==0)
