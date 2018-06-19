@@ -147,4 +147,9 @@ class ClubController extends Controller
         }
         return ['code' => 0, 'status' => 'error', 'msg' => '失败'];
     }
+
+    public function news()
+    {
+        return view('home.club.news');
+    }
 }

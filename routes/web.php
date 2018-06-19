@@ -30,6 +30,7 @@ Route::group(['namespace'=>'Home'],function (){
     Route::get('/club/detail', 'ClubController@detail');
     //社团列表页
     Route::get('/club/list', 'ClubController@list');
+    Route::get('/club/news', 'ClubController@news');
     //高校首页
     Route::get('/school', 'SchoolController@index');
     //高校列表页面
