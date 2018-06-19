@@ -135,4 +135,19 @@
 
         </div>
     </div>
+    <div class="row mt-2" style="overflow: hidden">
+        <textarea id="container" name="content">
+            这里写你的初始化内容
+        </textarea>
+    </div>
+@endsection
+@section('js')
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="/UE/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/UE/ueditor.all.js"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+    </script>
 @endsection
