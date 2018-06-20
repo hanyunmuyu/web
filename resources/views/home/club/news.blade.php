@@ -8,11 +8,6 @@
                          src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528551893864&di=d37656d1cd518477fd40c0b40454e03f&imgtype=0&src=http%3A%2F%2Fwww.ccutu.com%2Fupload%2Fimage%2F20170926%2F6364204577626002132488200.jpg"
                          alt="社团动态">
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        轮滑社团
-                    </div>
-                </div>
             </div>
             <div class="col-10">
                 <div class="media-body">
@@ -24,8 +19,12 @@
                         轮滑社团于周五晚上在钟楼广场举行轮哈表演，欢迎大家踊跃参与！
                         轮滑社团于周五晚上在钟楼广场举行轮哈表演，欢迎大家踊跃参与！
                     </div>
-                    <div class="row">
-                        2018-06-01 15:45
+                    <div class="row mt-1">
+                        <div class="col-12">
+                            <i class="fa fa-heart-o mr-2 text-left" id="favorite"></i><i id="good"
+                                                                                         class="fa fa-thumbs-o-up mr-2"></i><a
+                                    href="/club/detail?id=1">轮滑社团</a> 2018-06-01 15:45
+                        </div>
                     </div>
                 </div>
             </div>
@@ -110,6 +109,10 @@
     <script type="text/javascript" src="/UE/ueditor.all.js"></script>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
+        $('#favorite').click(function () {
+
+        })
+
         var ue = UE.getEditor('container');
     </script>
 @endsection

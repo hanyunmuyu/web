@@ -19,13 +19,13 @@
                              alt="社团动态">
                         <div class="media-body">
                             <h5 class="mt-0">
-                                <a href="#" class="text-dark">轮滑表演</a>
+                                <a href="/club/news?id=1" class="text-dark">轮滑表演</a>
                             </h5>
                             <p>轮滑社团于晚上在钟楼广场进行表演，欢迎大家光临！轮滑社团于晚上在钟楼广场进行表演，欢迎大家光临！</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                 <span class="ml-2 small">
-                                    <a class="mr-2" href="/club/detail">轮滑社团</a>{{date('Y-m-d H:i:s')}}
+                                    <a class="mr-2" href="/club/detail?id=1">轮滑社团</a>{{date('Y-m-d H:i:s')}}
                                 </span>
                                 </li>
                                 <li class="list-inline-item"><i class="fa fa-heart"></i>10000</li>

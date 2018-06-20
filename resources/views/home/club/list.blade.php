@@ -20,9 +20,10 @@
                         <div class="card">
                             <img class="card-img-top"
                                  src="{{$club->club_logo}}"
+                                 onclick="showDetail({{$club->id}})"
                                  alt="社团logo">
                             <div class="card-body">
-                                <h6 class="card-title text-center text-truncate ">{{$club->club_name}}</h6>
+                                <h6 class="card-title text-center text-truncate" onclick="showDetail({{$club->id}})">{{$club->club_name}}</h6>
                                 <p class="card-text text-left text-truncate " data-toggle="tooltip" data-placement="top"
                                    title="{{$club->club_description}}">
                                     {{$club->club_description}}
@@ -39,8 +40,8 @@
                                 </div>
                                 <div class="row text-center">
                                     <div class="col-12">
-                                        <button onclick="attention({{$club->id}},1)" class="btn btn-primary">关注</button>
-                                        <button onclick="attention({{$club->id}},2)" class="btn btn-primary">加入</button>
+                                        <button onclick="attention('{{$club->id}}',1)" class="btn btn-primary">关注</button>
+                                        <button onclick="attention('{{$club->id}}',2)" class="btn btn-primary">加入</button>
                                     </div>
                                 </div>
 
@@ -111,6 +112,10 @@
 @endsection
 @section('js')
     <script>
+        function showDetail(id) {
+            window.location.href = '/club/detail?id=' + id;
+        }
+
         $('[data-toggle="tooltip"]').tooltip();
 
         function attention(id, status) {
