@@ -82,14 +82,12 @@
                              alt="社团动态">
                         <div class="media-body">
                             <h5 class="mt-0">
-                                <a href="#" class="text-dark">轮滑表演</a>
+                                <a href="/club/news?id=1" class="text-dark">轮滑表演</a>
                             </h5>
                             <p>轮滑社团于晚上在钟楼广场进行表演，欢迎大家光临！轮滑社团于晚上在钟楼广场进行表演，欢迎大家光临！</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                <span class="ml-2 small">
-                                    <a class="mr-2" href="/club/detail">轮滑社团</a>{{date('Y-m-d H:i:s')}}
-                                </span>
+                                    {{date('Y-m-d H:i:s')}}
                                 </li>
                                 <li class="list-inline-item"><i class="fa fa-heart"></i>10000</li>
                                 <li class="list-inline-item"><i class="fa fa-eye"></i>10000</li>
@@ -135,19 +133,6 @@
 
         </div>
     </div>
-    <div class="row mt-2" style="overflow: hidden">
-        <textarea id="container" name="content">
-            这里写你的初始化内容
-        </textarea>
-    </div>
 @endsection
 @section('js')
-    <!-- 配置文件 -->
-    <script type="text/javascript" src="/UE/ueditor.config.js"></script>
-    <!-- 编辑器源码文件 -->
-    <script type="text/javascript" src="/UE/ueditor.all.js"></script>
-    <!-- 实例化编辑器 -->
-    <script type="text/javascript">
-        var ue = UE.getEditor('container');
-    </script>
 @endsection
