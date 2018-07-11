@@ -35,7 +35,8 @@ class ClubNewsTable extends Migration
                 ->default(0)
                 ->comment('喜欢的个数');
             $table->unsignedInteger('click_number')
-                ->default(0)
+                ->default(0);
+
             $table->timestamps();
         });
     }

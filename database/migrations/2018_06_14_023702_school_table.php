@@ -32,6 +32,13 @@ class SchoolTable extends Migration
             $table->string('school_description')
                 ->nullable()
                 ->comment('高校的描述信息');
+            $table->unsignedInteger('favorite_number')
+                ->default(0)
+                ->comment("关注的人数");
+
+            $table->unsignedInteger('club_number')
+                ->default(0)
+                ->comment('社团的数量');
 
             $table->timestamps();
         });

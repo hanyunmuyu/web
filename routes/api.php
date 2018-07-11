@@ -14,4 +14,6 @@ use Illuminate\Http\Request;
 */
 Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     Route::get('/', 'IndexController@index');
+    //校园列表
+    Route::get('/school/index', 'SchoolController@index');
 });
