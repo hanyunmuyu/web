@@ -18,18 +18,25 @@ class SchoolController extends Controller
     public function index()
     {
         $schoolList = $this->schoolRepository->getSchoolList();
-        $tmp = [];
-        $tmp['data'] = [];
-        if ($schoolList) {
-            $schoolList = $schoolList->toArray();
-            $data = $schoolList['data'];
-            $tmp['totalPage'] = $schoolList['last_page'];
-            $tmp['currentPage'] = $schoolList['current_page'];
-            foreach ($data as $v) {
+        $data = $this->formatPaginate($schoolList);
+        if ($data) {
+            foreach ($data['data'] as $key => $v) {
                 $v['school_logo'] = config('constant.app_domain') . $v['school_logo'];
-                $tmp['data'][] = $v;
+                $data['data'][$key] = $v;
             }
         }
-        return $this->success($tmp);
+//        $tmp = [];
+//        $tmp['data'] = [];
+//        if ($schoolList) {
+//            $schoolList = $schoolList->toArray();
+//            $data = $schoolList['data'];
+//            $tmp['totalPage'] = $schoolList['last_page'];
+//            $tmp['currentPage'] = $schoolList['current_page'];
+//            foreach ($data as $v) {
+//                $v['school_logo'] = config('constant.app_domain') . $v['school_logo'];
+//                $tmp['data'][] = $v;
+//            }
+//        }
+        return $this->success($data);
     }
 }

@@ -41,4 +41,23 @@ class Controller extends BaseController
         }
         return $arr;
     }
+
+    public function formatPaginate($paginate): array
+    {
+        $tmp = [];
+        if ($paginate) {
+            $paginate = $paginate->toArray();
+            $data = $paginate['data'];
+            $tmp['totalPage'] = $paginate['last_page'];
+            $tmp['currentPage'] = $paginate['current_page'];
+            foreach ($data as $v) {
+                $tmp['data'][] = $v;
+            }
+        } else {
+            $tmp['totalPage'] = 1;
+            $tmp['currentPage'] = 1;
+            $tmp['data'] = [];
+        }
+        return $tmp;
+    }
 }
