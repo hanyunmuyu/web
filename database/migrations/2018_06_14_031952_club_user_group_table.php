@@ -36,5 +36,6 @@ class ClubUserGroupTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('clu_user_group');
     }
 }
