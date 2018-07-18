@@ -18,4 +18,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     Route::get('/school/index', 'SchoolController@index');
     //社团列表
     Route::get('/club/index', 'ClubController@index');
+    Route::post('/upload', 'UploadController@index');
 });

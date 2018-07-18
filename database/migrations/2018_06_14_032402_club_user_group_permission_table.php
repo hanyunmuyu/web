@@ -38,5 +38,6 @@ class ClubUserGroupPermissionTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('clu_user_group_permission');
     }
 }

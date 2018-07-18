@@ -79,6 +79,11 @@ class CreateUsersTable extends Migration
                 ->default(0)
                 ->comment('是否完成认证：0：表示未认证；1表示申请认证；2：表示认证失败；3：认证通过');
 
+            $table->string('api_token')
+                ->nullable()
+                ->unique()
+                ->comment('API用的token认证');
+
             $table->rememberToken()->index();
             $table->timestamps();
         });

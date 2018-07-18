@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ClubUserPermissionTable extends Migration
+class AttachmentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,25 +14,23 @@ class ClubUserPermissionTable extends Migration
     public function up()
     {
         //
-        Schema::create('clu_user_permission', function (Blueprint $table) {
+        Schema::create('attachment', function (Blueprint $table) {
+
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
 
-            $table->increments('id');
+            $table->increments('id')->comment('主键id');
 
-            $table->string('permission_name')
-                ->comment('权限名称');
+            $table->string('origin_name')
+                ->nullAble()
+                ->comment('源文件明');
 
-            $table->string('controller');
-
-            $table->string('method');
-
-            $table->unsignedTinyInteger('pid')
-                ->default(0)
-                ->comment('父级id');
+            $table->string('attachment_path')
+                ->comment('附件地址');
 
             $table->timestamps();
         });
+
     }
 
     /**
@@ -43,6 +41,6 @@ class ClubUserPermissionTable extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('clu_user_permission');
+        Schema::dropIfExists('attachment');
     }
 }
