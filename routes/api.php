@@ -19,4 +19,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     //社团列表
     Route::get('/club/index', 'ClubController@index');
     Route::post('/upload', 'UploadController@index');
+    Route::post('/login', 'LoginController@doLogin');
+    Route::group(['namespace' => 'profile', 'prefix' => 'profile','middleware'=>['apiMiddleware']], function () {
+        Route::get('/user', 'UserController@index');
+        //编辑用户头像
+        Route::post('/user/updateAvatar', 'UserController@updateAvatar');
+    });
 });
