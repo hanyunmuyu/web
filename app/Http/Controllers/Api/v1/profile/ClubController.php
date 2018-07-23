@@ -23,10 +23,16 @@ class ClubController extends Controller
     {
         $name = $request->get('name');
         $category = $request->get('category');
+        $category = trim($category, ',');
+        $clubDescription = $request->get('clubDescription');
         $user = auth('api')->user();
         if (!$name) {
             return $this->error('社团名称不可以为空');
         }
+        if (!$clubDescription) {
+            return $this->error('社团描述不可以为空');
+        }
+
         if (!$category) {
             return $this->error('分类不可以为空');
         }
@@ -39,7 +45,7 @@ class ClubController extends Controller
         if ($attachment) {
             $path = $attachment[0]['attachment_path'];
         }
-        $this->clubRepository->createClub($user->id, $user->school_id, $name, $path, $category);
+        $this->clubRepository->createClub($user->id, $user->school_id, $name, $path, $clubDescription, $category);
         return $this->success();
     }
 }
