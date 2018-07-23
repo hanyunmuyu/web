@@ -18,11 +18,13 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     Route::get('/school/index', 'SchoolController@index');
     //社团列表
     Route::get('/club/index', 'ClubController@index');
+    Route::get('/club/category', 'ClubController@category');
     Route::post('/upload', 'UploadController@index');
     Route::post('/login', 'LoginController@doLogin');
-    Route::group(['namespace' => 'profile', 'prefix' => 'profile','middleware'=>['apiMiddleware']], function () {
+    Route::group(['namespace' => 'profile', 'prefix' => 'profile', 'middleware' => ['apiMiddleware']], function () {
         Route::get('/user', 'UserController@index');
         //编辑用户头像
         Route::post('/user/updateAvatar', 'UserController@updateAvatar');
+        Route::post('/club/create', 'ClubController@create');
     });
 });

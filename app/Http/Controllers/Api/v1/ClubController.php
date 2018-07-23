@@ -24,4 +24,9 @@ class ClubController extends Controller
         }
         return $this->success($data);
     }
+
+    public function category()
+    {
+        return $this->success($this->clubRepository->getClubCategory()->toArray());
+    }
 }

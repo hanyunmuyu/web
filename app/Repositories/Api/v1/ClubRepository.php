@@ -9,6 +9,7 @@
 namespace App\Repositories\Api\v1;
 
 
+use App\Models\ClubCategoryModel;
 use App\Models\ClubModel;
 
 class ClubRepository
@@ -16,5 +17,28 @@ class ClubRepository
     public function getClubList()
     {
         return ClubModel::orderby('id', 'desc')->paginate(16);
+    }
+
+    public function getClubCategory()
+    {
+        return ClubCategoryModel::all();
+    }
+
+    public function getClubByName($name, $school_id)
+    {
+        return ClubModel::where('club_name', $name)
+            ->where('school_id', $school_id)
+            ->first();
+    }
+
+    public function createClub($user_id, $school_id, $name, $club_logo, $category)
+    {
+        return ClubModel::insert([
+            'create_user_id' => $user_id,
+            'school_id' => $school_id,
+            'club_name' => $name,
+            'club_logo' => $club_logo,
+            'category_ids' => $category
+        ]);
     }
 }

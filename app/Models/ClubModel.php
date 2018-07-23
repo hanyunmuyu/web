@@ -8,4 +8,8 @@ class ClubModel extends Model
 {
     //
     protected $table = 'club';
+    protected $fillable = [
+        'club_name',
+
+    ];
 }
