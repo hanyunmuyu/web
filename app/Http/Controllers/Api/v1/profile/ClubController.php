@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\profile;
 
 use App\Repositories\Api\v1\ClubRepository;
 use App\Services\AttachmentService;
+use App\Services\ClubService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,11 +13,12 @@ class ClubController extends Controller
     //
     private $attachmentService;
     private $clubRepository;
-
-    public function __construct(AttachmentService $attachmentService, ClubRepository $clubRepository)
+    private $clubService;
+    public function __construct(AttachmentService $attachmentService, ClubRepository $clubRepository,ClubService $clubService)
     {
         $this->attachmentService = $attachmentService;
         $this->clubRepository = $clubRepository;
+        $this->clubService = $clubService;
     }
 
     public function create(Request $request)
@@ -46,6 +48,14 @@ class ClubController extends Controller
             $path = $attachment[0]['attachment_path'];
         }
         $this->clubRepository->createClub($user->id, $user->school_id, $name, $path, $clubDescription, $category);
+        return $this->success();
+    }
+
+    public function payAttention(Request $request)
+    {
+        $user = auth('api')->user();
+        $schoolId = $request->get('schoolId');
+        $this->clubService->payClubAttention($user->id, $schoolId);
         return $this->success();
     }
 }

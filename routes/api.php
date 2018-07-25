@@ -16,6 +16,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     Route::get('/', 'IndexController@index');
     //校园列表
     Route::get('/school/index', 'SchoolController@index');
+    //高校详情
+    Route::get('/school/detail', 'SchoolController@detail');
     //社团列表
     Route::get('/club/index', 'ClubController@index');
     Route::get('/club/category', 'ClubController@category');
@@ -26,5 +28,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
         //编辑用户头像
         Route::post('/user/updateAvatar', 'UserController@updateAvatar');
         Route::post('/club/create', 'ClubController@create');
+        //关注校园
+        Route::post('/school/attention', 'SchoolController@payAttention');
     });
 });

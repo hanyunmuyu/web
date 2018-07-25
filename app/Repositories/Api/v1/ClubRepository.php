@@ -33,7 +33,7 @@ class ClubRepository
 
     public function createClub($user_id, $school_id, $name, $club_logo,$description, $category)
     {
-        return ClubModel::insert([
+        return ClubModel::create([
             'create_user_id' => $user_id,
             'school_id' => $school_id,
             'club_name' => $name,
