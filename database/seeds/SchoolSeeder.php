@@ -16,7 +16,7 @@ class SchoolSeeder extends Seeder
             \App\Models\SchoolModel::create([
                 'school_name' => '河南工业大学-' . $i,
                 'school_logo' => '/uploads/logo/94a400fd0f898bc2d85f8443134e2c1a5.jpg',
-                'school_description' => str_repeat('河南工业大学', $i % 9),
+                'school_description' => str_repeat('河南工业大学', $i % 9) . '河南工业大学',
                 'favorite_number' => $i + 100,
                 'club_number' => $i + 1,
             ]);

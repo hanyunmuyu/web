@@ -63,6 +63,10 @@ class SchoolController extends Controller
             $school->isAttention = 0;
         }
         $school->school_logo = config('constant.app_domain') . $school->school_logo;
+
+        $school->club_number = $this->schoolService->getSchoolClubNumber($schoolId);
+        $school->deparment_number = $this->schoolService->getSchoolDepartment($schoolId);
+        $school->attention_number = $this->schoolService->getSchoolAttentionNumber($schoolId);
         return $this->success($school->toArray());
     }
 }

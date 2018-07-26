@@ -9,6 +9,8 @@
 namespace App\Services;
 
 
+use App\Models\ClubModel;
+use App\Models\SchoolDepartmentModel;
 use App\Models\SchoolModel;
 use App\Models\SchoolUserModel;
 
@@ -44,5 +46,20 @@ class SchoolService
     public function getSchoolById($schoolId)
     {
         return SchoolModel::where('id', $schoolId)->first();
+    }
+
+    public function getSchoolAttentionNumber($schoolId)
+    {
+        return SchoolUserModel::where('school_id', $schoolId)->count();
+    }
+
+    public function getSchoolClubNumber($schoolId)
+    {
+        return ClubModel::where('school_id', $schoolId)->count();
+    }
+
+    public function getSchoolDepartment($schoolId)
+    {
+        return SchoolDepartmentModel::where('school_id', $schoolId)->count();
     }
 }
