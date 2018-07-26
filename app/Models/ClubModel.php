@@ -11,7 +11,10 @@ class ClubModel extends Model
     protected $fillable = [
         'club_name',
         'school_id',
+        'club_name',
+        'club_description',
+        'category_ids',
+        'club_logo',
         'create_user_id',
-
     ];
 }
