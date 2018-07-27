@@ -12,6 +12,7 @@ namespace App\Services;
 use App\Models\ClubModel;
 use App\Models\SchoolDepartmentModel;
 use App\Models\SchoolModel;
+use App\Models\SchoolSignInModel;
 use App\Models\SchoolUserModel;
 
 class SchoolService
@@ -61,5 +62,26 @@ class SchoolService
     public function getSchoolDepartment($schoolId)
     {
         return SchoolDepartmentModel::where('school_id', $schoolId)->count();
+    }
+
+    public function signIn($schoolId, $userId)
+    {
+        $data = [];
+        $data['school_id'] = $schoolId;
+        $data['user_id'] = $userId;
+        if (!$this->checkSignIn($schoolId, $userId)) {
+            return SchoolSignInModel::create($data);
+        }
+    }
+
+    public function checkSignIn($schoolId, $userId)
+    {
+        $data = [];
+        $data['school_id'] = $schoolId;
+        $data['user_id'] = $userId;
+        return SchoolSignInModel::where('school_id', $schoolId)
+            ->where('user_id', $userId)
+            ->whereBetween('created_at', [date("Y-m-d"), date('Y-m-d', strtotime('+1day'))])
+            ->first();
     }
 }

@@ -30,4 +30,11 @@ class SchoolController extends Controller
         $this->schoolService->paySchoolAttention($schoolId, $user->id);
         return $this->success([], '成功');
     }
+
+    public function signIn(Request $request)
+    {
+        $schoolId = $request->get('schoolId');
+        $this->schoolService->signIn($schoolId, auth('api')->id());
+        return $this->success();
+    }
 }

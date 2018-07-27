@@ -54,10 +54,18 @@ class SchoolController extends Controller
             return $this->error('高校不存在！');
         }
         if (auth('api')->check()) {
-            if ($this->schoolService->checkSchoolAttention($schoolId, auth('api')->id())) {
+            $userId = auth('api')->id();
+
+            if ($this->schoolService->checkSchoolAttention($schoolId,$userId)) {
                 $school->isAttention = 1;
             } else {
                 $school->isAttention = 0;
+            }
+
+            if ($this->schoolService->checkSignIn($schoolId, $userId)) {
+                $school->isSignIn = 1;
+            }else{
+                $school->isSignIn = 0;
             }
         } else {
             $school->isAttention = 0;

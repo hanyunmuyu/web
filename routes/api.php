@@ -31,5 +31,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
         Route::post('/club/create', 'ClubController@create');
         //关注校园
         Route::post('/school/attention', 'SchoolController@payAttention');
+        Route::post('/school/signIn', 'SchoolController@signIn');
     });
 });
