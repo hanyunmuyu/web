@@ -18,6 +18,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     Route::get('/school/index', 'SchoolController@index');
     //高校详情
     Route::get('/school/detail', 'SchoolController@detail');
+    Route::get('/school/news', 'SchoolController@news');
     //社团列表
     Route::post('/register', 'RegisterController@doRegister');
     Route::get('/club/index', 'ClubController@index');

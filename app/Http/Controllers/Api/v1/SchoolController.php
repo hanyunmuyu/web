@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Repositories\Api\v1\SchoolNewsRepository;
 use App\Repositories\Api\v1\SchoolRepository;
+use App\Services\AttachmentService;
 use App\Services\SchoolService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,11 +13,20 @@ class SchoolController extends Controller
 {
     protected $schoolRepository;
     private $schoolService;
+    private $schoolNewsRepository;
+    private $attachmentService;
 
-    public function __construct(SchoolRepository $schoolRepository, SchoolService $schoolService)
+    public function __construct(
+        SchoolRepository $schoolRepository,
+        SchoolService $schoolService,
+        SchoolNewsRepository $schoolNewsRepository,
+        AttachmentService $attachmentService
+    )
     {
         $this->schoolRepository = $schoolRepository;
         $this->schoolService = $schoolService;
+        $this->schoolNewsRepository = $schoolNewsRepository;
+        $this->attachmentService = $attachmentService;
     }
 
     public function index()
@@ -56,7 +67,7 @@ class SchoolController extends Controller
         if (auth('api')->check()) {
             $userId = auth('api')->id();
 
-            if ($this->schoolService->checkSchoolAttention($schoolId,$userId)) {
+            if ($this->schoolService->checkSchoolAttention($schoolId, $userId)) {
                 $school->isAttention = 1;
             } else {
                 $school->isAttention = 0;
@@ -64,7 +75,7 @@ class SchoolController extends Controller
 
             if ($this->schoolService->checkSignIn($schoolId, $userId)) {
                 $school->isSignIn = 1;
-            }else{
+            } else {
                 $school->isSignIn = 0;
             }
         } else {
@@ -76,5 +87,21 @@ class SchoolController extends Controller
         $school->deparment_number = $this->schoolService->getSchoolDepartment($schoolId);
         $school->attention_number = $this->schoolService->getSchoolAttentionNumber($schoolId);
         return $this->success($school->toArray());
+    }
+
+    public function news()
+    {
+        $newsList = $this->formatPaginate($this->schoolNewsRepository->getNewsList());
+        if ($newsList) {
+            $data = $newsList['data'];
+            foreach ($data as $key => $v) {
+                $imgList = array_map(function ($v) {
+                    return config('constant.app_domain') . $this->attachmentService->getAttachmentById($v);
+                }, explode(',', $v['image_list']));
+                $data[$key]['image_list'] = $imgList;
+            }
+            $newsList['data'] = $data;
+        }
+        return $this->success($newsList);
     }
 }
