@@ -13,9 +13,10 @@ use App\Models\SchoolNewsModel;
 
 class SchoolNewsRepository
 {
-    public function getNewsList()
+    public function getNewsList($schoolId)
     {
         return SchoolNewsModel::where('status', 1)
+            ->where('school_id', $schoolId)
             ->orderby('id', 'desc')
             ->orderby('click_number', 'desc')
             ->paginate();

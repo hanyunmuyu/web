@@ -50,8 +50,9 @@ class Controller extends BaseController
             $data = $paginate['data'];
             $tmp['totalPage'] = $paginate['last_page'];
             $tmp['currentPage'] = $paginate['current_page'];
-            foreach ($data as $v) {
-                $tmp['data'][] = $v;
+            $tmp['data'] = [];
+            foreach ($data as $key => $v) {
+                $tmp['data'][$key] = $v;
             }
         } else {
             $tmp['totalPage'] = 1;

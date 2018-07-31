@@ -89,9 +89,13 @@ class SchoolController extends Controller
         return $this->success($school->toArray());
     }
 
-    public function news()
+    public function news(Request $request)
     {
-        $newsList = $this->formatPaginate($this->schoolNewsRepository->getNewsList());
+        $schoolId = $request->get('schoolId');
+        if (!$schoolId) {
+            return $this->error('校园id不可以为空！');
+        }
+        $newsList = $this->formatPaginate($this->schoolNewsRepository->getNewsList($schoolId));
         if ($newsList) {
             $data = $newsList['data'];
             foreach ($data as $key => $v) {
