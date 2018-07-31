@@ -17,7 +17,7 @@ class SchoolNewsSeeder extends Seeder
             $data['school_id'] = $i + 1;
             $data['image_list'] = '1,2';
             $data['title'] = '新闻标题';
-            $data['content'] = '新闻标题新闻标题新闻标题';
+            $data['content'] = '新闻内容';
             \App\Models\SchoolNewsModel::create($data);
         }
     }

@@ -33,5 +33,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
         //关注校园
         Route::post('/school/attention', 'SchoolController@payAttention');
         Route::post('/school/signIn', 'SchoolController@signIn');
+
+        Route::get('/user/message', 'MessageController@index');
     });
 });
