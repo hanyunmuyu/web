@@ -9,6 +9,7 @@
 namespace App\Services;
 
 
+use App\Models\ClubModel;
 use App\Models\ClubUserModel;
 
 class ClubService
@@ -36,5 +37,10 @@ class ClubService
         return ClubUserModel::where('user_id', $userId)
             ->where('club_id', $clubId)
             ->first();
+    }
+
+    public function getClubBydId($clubId)
+    {
+        return ClubModel::where('id', $clubId)->first();
     }
 }
