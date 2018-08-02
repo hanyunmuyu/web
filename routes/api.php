@@ -16,6 +16,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     Route::get('/', 'IndexController@index');
     //校园列表
     Route::get('/school/index', 'SchoolController@index');
+    Route::get('/school/all', 'SchoolController@all');
     //高校详情
     Route::get('/school/detail', 'SchoolController@detail');
     Route::get('/school/news', 'SchoolController@news');

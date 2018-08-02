@@ -22,6 +22,7 @@ class RegisterController extends Controller
         $name = $request->get('name');
         $password = $request->get('password');
         $gender = $request->get('gender');
+        $schoolId = $request->get('schoolId', 0);
         if (!$name) {
             return $this->error('用户名不可以为空');
         }
@@ -35,7 +36,7 @@ class RegisterController extends Controller
             return $this->error('该用户已经存在，换个昵称试试');
         }
         $password = Hash::make($password);
-        $this->userService->doRegister($name, $password, $gender);
+        $this->userService->doRegister($name, $password, $gender,$schoolId);
         return $this->success();
     }
 }

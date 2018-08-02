@@ -22,4 +22,9 @@ class SchoolRepository
     {
         return SchoolModel::where('id', $schoolId)->first();
     }
+
+    public function getAllSchool()
+    {
+        return SchoolModel::all();
+    }
 }

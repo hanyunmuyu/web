@@ -54,6 +54,12 @@ class SchoolController extends Controller
         return $this->success($data);
     }
 
+    public function all()
+    {
+        $schoolList = $this->schoolRepository->getAllSchool();
+        return $this->success($schoolList->toArray());
+    }
+
     public function detail(Request $request)
     {
         $schoolId = $request->get('schoolId');
