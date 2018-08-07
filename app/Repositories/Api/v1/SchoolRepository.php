@@ -10,6 +10,7 @@ namespace App\Repositories\Api\v1;
 
 
 use App\Models\SchoolModel;
+use App\Models\SchoolRecommendModel;
 
 class SchoolRepository
 {
@@ -26,5 +27,12 @@ class SchoolRepository
     public function getAllSchool()
     {
         return SchoolModel::all();
+    }
+
+    public function getSchoolRecommendList()
+    {
+        return SchoolRecommendModel::orderby('id', 'desc')
+            ->where('status', 1)
+            ->paginate(16);
     }
 }

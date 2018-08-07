@@ -20,6 +20,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     //高校详情
     Route::get('/school/detail', 'SchoolController@detail');
     Route::get('/school/news', 'SchoolController@news');
+    Route::get('/school/recommend', 'SchoolController@recommend');
     //社团列表
     Route::post('/register', 'RegisterController@doRegister');
     Route::get('/club/index', 'ClubController@index');

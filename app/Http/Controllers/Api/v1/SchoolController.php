@@ -114,4 +114,20 @@ class SchoolController extends Controller
         }
         return $this->success($newsList);
     }
+
+    public function recommend()
+    {
+        $schoolRecommendList = $this->formatPaginate($this->schoolRepository->getSchoolRecommendList());
+        if ($schoolRecommendList) {
+            $data = $schoolRecommendList['data'];
+            foreach ($data as $key => $v) {
+                $imgList = array_map(function ($v) {
+                    return config('constant.app_domain') . $this->attachmentService->getAttachmentById($v);
+                }, explode(',', $v['image_list']));
+                $data[$key]['image_list'] = $imgList;
+            }
+            $schoolRecommendList['data'] = $data;
+        }
+        return $this->success($schoolRecommendList);
+    }
 }
