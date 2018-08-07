@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Repositories\Api\v1\SchoolNewsRepository;
+use App\Repositories\Api\v1\SchoolPlayerRepository;
 use App\Repositories\Api\v1\SchoolRepository;
 use App\Services\AttachmentService;
+use App\Services\ClubService;
 use App\Services\SchoolService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,18 +17,24 @@ class SchoolController extends Controller
     private $schoolService;
     private $schoolNewsRepository;
     private $attachmentService;
+    private $clubService;
+    private $schoolPlayerRepository;
 
     public function __construct(
         SchoolRepository $schoolRepository,
         SchoolService $schoolService,
         SchoolNewsRepository $schoolNewsRepository,
-        AttachmentService $attachmentService
+        AttachmentService $attachmentService,
+        ClubService $clubService,
+        SchoolPlayerRepository $schoolPlayerRepository
     )
     {
         $this->schoolRepository = $schoolRepository;
         $this->schoolService = $schoolService;
         $this->schoolNewsRepository = $schoolNewsRepository;
         $this->attachmentService = $attachmentService;
+        $this->clubService = $clubService;
+        $this->schoolPlayerRepository = $schoolPlayerRepository;
     }
 
     public function index()
@@ -124,9 +132,37 @@ class SchoolController extends Controller
                 $imgList = array_map(function ($v) {
                     return config('constant.app_domain') . $this->attachmentService->getAttachmentById($v);
                 }, explode(',', $v['image_list']));
-                $data[$key]['image_list'] = $imgList;
+                $v['name'] = '';
+                $v['logo'] = config('constant.app_domain') . '';
+                $v['image_list'] = $imgList;
+
+                if ($v['source'] == 'school') {
+                    $school = $this->schoolService->getSchoolById($v['source_id']);
+                    if ($school) {
+                        $v['name'] = $school->school_name;
+                        $v['logo'] = config('constant.app_domain') . $school->school_logo;
+                    }
+                } elseif ($v['source'] == 'club') {
+                    $club = $this->clubService->getClubBydId($v['source_id']);
+                    if ($club) {
+                        $v['name'] = $club->club_name;
+                        $v['logo'] = config('constant.app_domain') . $club->club_logo;
+                    }
+                }
+
+                $data[$key] = $v;
+
             }
             $schoolRecommendList['data'] = $data;
+        }
+        $schoolRecommendList['player'] = [];
+        $player = $this->schoolPlayerRepository->getSchoolPlayer();
+        if ($player) {
+            foreach ($player as $k => $value) {
+                $value->image = config('constant.app_domain') . $this->attachmentService->getAttachmentById($value->image_id);
+                $player->$k = $value;
+            }
+            $schoolRecommendList['player'] = $player->toArray();
         }
         return $this->success($schoolRecommendList);
     }
