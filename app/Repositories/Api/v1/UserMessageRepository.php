@@ -13,9 +13,10 @@ use App\Models\UserMessageModel;
 
 class UserMessageRepository
 {
-    public function getUserMessageList($userId)
+    public function getUserMessageList($userId, $tag)
     {
         return UserMessageModel::where('user_id', $userId)
+            ->where('tag', $tag)
             ->orderby('status', 'desc')
             ->orderby('id', 'desc')
             ->paginate(16);

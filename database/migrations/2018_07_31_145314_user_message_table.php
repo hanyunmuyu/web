@@ -38,6 +38,10 @@ class UserMessageTable extends Migration
                 ->default(0)
                 ->comment('消息的状态：0表示未读；1表示已读');
 
+            $table->enum('tag', ['msg', 'notice'])
+                ->default('msg')
+                ->comment('消息类型,msg:消息；notice通知');
+
             $table->timestamps();
         });
     }

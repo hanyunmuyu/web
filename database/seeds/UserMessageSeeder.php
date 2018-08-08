@@ -18,6 +18,7 @@ class UserMessageSeeder extends Seeder
             $data['title'] = '消息的标题';
             $data['source'] = $i % 2 == 0 ? 'school' : 'club';
             $data['source_id'] = $i;
+            $data['tag'] = $i % 3 == 0 ? 'msg' : 'notice';
             \App\Models\UserMessageModel::create($data);
         }
     }

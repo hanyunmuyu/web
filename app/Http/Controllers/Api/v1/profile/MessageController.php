@@ -24,7 +24,8 @@ class MessageController extends Controller
     public function index(Request $request)
     {
         $user = auth('api')->user();
-        $userMessageList = $this->formatPaginate($this->userMessageRepository->getUserMessageList($user->id));
+        $tag = $request->get('tag', 'msg');
+        $userMessageList = $this->formatPaginate($this->userMessageRepository->getUserMessageList($user->id,$tag));
         $data = $userMessageList['data'];
         foreach ($data as $k => $v) {
             $v['logo'] = config('constant.app_domain');
