@@ -61,6 +61,7 @@ class ClubController extends Controller
         }
         $res = $this->clubService->payClubAttention($user->id, $clubId);
         if ($res) {
+//            $isAttented=$this->clubService->checkClubUserAttention($user->id, $clubId);
             return $this->success();
         } else {
             return $this->error('关注失败，请稍后重试！');

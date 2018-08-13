@@ -42,4 +42,9 @@ class ClubRepository
             'category_ids' => $category
         ]);
     }
+
+    public function getClubById($clubId)
+    {
+        return ClubModel::where('id', $clubId)->first();
+    }
 }

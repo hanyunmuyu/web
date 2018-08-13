@@ -9,6 +9,7 @@
 namespace App\Services;
 
 
+use App\Models\ClubCategoryModel;
 use App\Models\ClubModel;
 use App\Models\ClubUserModel;
 
@@ -42,5 +43,10 @@ class ClubService
     public function getClubBydId($clubId)
     {
         return ClubModel::where('id', $clubId)->first();
+    }
+
+    public function getClubCategory($catIds)
+    {
+        return ClubCategoryModel::whereIn('id', $catIds)->get();
     }
 }

@@ -32,14 +32,18 @@ class Controller extends BaseController
 
     private function delNull($arr)
     {
-        foreach ($arr as $key => $value) {
-            if (is_array($value)) {
-                $arr[$key] = $this->delNull($value);
-            } else {
-                $arr[$key] = $value ?? '';
+        if (is_array($arr)) {
+            foreach ($arr as $key => $value) {
+                if (is_array($value)) {
+                    $arr[$key] = $this->delNull($value);
+                } else {
+                    $arr[$key] = $this->delNull($value) ?? '';
+                }
             }
+            return $arr;
+        } else {
+            return $arr ?? '';
         }
-        return $arr;
     }
 
     public function formatPaginate($paginate): array

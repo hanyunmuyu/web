@@ -24,6 +24,9 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     //社团列表
     Route::post('/register', 'RegisterController@doRegister');
     Route::get('/club/index', 'ClubController@index');
+    //社团详情
+    Route::get('/club/detail', 'ClubController@detail');
+
     Route::get('/club/category', 'ClubController@category');
     Route::post('/upload', 'UploadController@index');
     Route::post('/login', 'LoginController@doLogin');
