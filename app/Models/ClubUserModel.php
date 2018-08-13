@@ -8,4 +8,9 @@ class ClubUserModel extends Model
 {
     //
     protected $table = 'club_user';
+    protected $fillable = [
+        'club_id',
+        'user_id',
+
+    ];
 }

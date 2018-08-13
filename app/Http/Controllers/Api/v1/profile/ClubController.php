@@ -14,7 +14,8 @@ class ClubController extends Controller
     private $attachmentService;
     private $clubRepository;
     private $clubService;
-    public function __construct(AttachmentService $attachmentService, ClubRepository $clubRepository,ClubService $clubService)
+
+    public function __construct(AttachmentService $attachmentService, ClubRepository $clubRepository, ClubService $clubService)
     {
         $this->attachmentService = $attachmentService;
         $this->clubRepository = $clubRepository;
@@ -54,8 +55,15 @@ class ClubController extends Controller
     public function payAttention(Request $request)
     {
         $user = auth('api')->user();
-        $schoolId = $request->get('schoolId');
-        $this->clubService->payClubAttention($user->id, $schoolId);
-        return $this->success();
+        $clubId = $request->get('clubId');
+        if (!$clubId) {
+            return $this->error('clubId不可以为空！');
+        }
+        $res = $this->clubService->payClubAttention($user->id, $clubId);
+        if ($res) {
+            return $this->success();
+        } else {
+            return $this->error('关注失败，请稍后重试！');
+        }
     }
 }

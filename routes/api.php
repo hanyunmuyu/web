@@ -32,8 +32,14 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
         //编辑用户头像
         Route::post('/user/updateAvatar', 'UserController@updateAvatar');
         Route::post('/club/create', 'ClubController@create');
+        //关注社团
+        Route::post('/club/attention', 'ClubController@payAttention');
+
+
+
         //关注校园
         Route::post('/school/attention', 'SchoolController@payAttention');
+
         Route::post('/school/signIn', 'SchoolController@signIn');
 
         Route::get('/user/message', 'MessageController@index');
