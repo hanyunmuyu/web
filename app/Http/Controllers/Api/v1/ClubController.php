@@ -50,6 +50,22 @@ class ClubController extends Controller
             }
         }
         $club->categories = $this->clubService->getClubCategory(explode(',', $club->category_ids))->toArray();
-        return $this->success(['detail'=>$club->toArray()]);
+        return $this->success(['detail' => $club->toArray()]);
+    }
+
+    public function member(Request $request)
+    {
+        $clubId = $request->get('clubId');
+        if (!$clubId) {
+            return $this->error('clubId不可以为空');
+        }
+        $members = $this->formatPaginate($this->clubRepository->getMemberList($clubId));
+        $data = $members['data'];
+        foreach ($data as $key => $val) {
+            $val['avatar'] = config('constant.app_domain') . $val['avatar'];
+            $data[$key] = $val;
+        }
+        $members['data'] = $data;
+        return $this->success($members);
     }
 }

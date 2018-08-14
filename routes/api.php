@@ -26,6 +26,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'v1'], function () {
     Route::get('/club/index', 'ClubController@index');
     //社团详情
     Route::get('/club/detail', 'ClubController@detail');
+    //社团成员
+    Route::get('/club/member', 'ClubController@member');
 
     Route::get('/club/category', 'ClubController@category');
     Route::post('/upload', 'UploadController@index');

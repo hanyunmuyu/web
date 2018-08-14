@@ -11,6 +11,7 @@ namespace App\Repositories\Api\v1;
 
 use App\Models\ClubCategoryModel;
 use App\Models\ClubModel;
+use App\Models\ClubUserModel;
 
 class ClubRepository
 {
@@ -46,5 +47,12 @@ class ClubRepository
     public function getClubById($clubId)
     {
         return ClubModel::where('id', $clubId)->first();
+    }
+
+    public function getMemberList($clubId)
+    {
+        return ClubUserModel::leftjoin('users', 'users.id', '=', 'club_user.user_id')
+            ->where('club_user.club_id',$clubId)
+            ->paginate(16);
     }
 }
