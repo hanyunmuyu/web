@@ -9,4 +9,5 @@ Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@doLogin');
 Route::group(['middleware'=>['adminMiddle']], function () {
     Route::get('/index', 'IndexController@index');
+    Route::get('/school/index', 'SchoolController@index');
 });
