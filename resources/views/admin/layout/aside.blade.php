@@ -195,7 +195,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/charts/chartjs.html" class="nav-link">
+                            <a href="/admin/club/index" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>社团列表</p>
                             </a>

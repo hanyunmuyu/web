@@ -18,4 +18,8 @@ Route::group(['middleware' => ['adminMiddle']], function () {
     Route::post('/school/news/update', 'SchoolController@updateNews');
     //删除新闻
     Route::post('/school/news/delete', 'SchoolController@deleteNews');
+    //社团列表
+    Route::get('/club/index', 'ClubController@index');
+    //处理社团
+    Route::post('/club/deal', 'ClubController@deal');
 });
