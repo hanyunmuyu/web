@@ -1,4 +1,3 @@
-
 <!-- Navbar -->
 
 <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
@@ -164,13 +163,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="/admin/school/add" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>添加高校</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
+                            <a href="/admin/school/news" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>高校新闻</p>
                             </a>

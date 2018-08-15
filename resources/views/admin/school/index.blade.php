@@ -1,13 +1,13 @@
 @extends('admin.layout.layout')
 @section('content')
     <div class="row">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover">
             <tr>
                 <th>id</th>
                 <th>名称</th>
                 <th>描述</th>
                 <th>Logo</th>
-                <td>关注数</td>
+                <td>关注人数</td>
                 <td>社团数</td>
                 <th>创办时间</th>
             </tr>

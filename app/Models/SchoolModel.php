@@ -8,4 +8,10 @@ class SchoolModel extends Model
 {
     //
     protected $table = 'school';
+    protected $fillable = [
+        'school_name',
+        'school_logo',
+        'school_description',
+
+    ];
 }
